@@ -14,27 +14,31 @@ use App\Http\Controllers\WebsiteController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// public route
+Route::get('/', [WebsiteController::class, 'index'])->name('page.index');
 
 Route::get('register-success', [WebsiteController::class, 'AfterRegister'])->name('after-register');
 
+Route::get('/about', [WebsiteController::class, 'About'])->name('page.about');
+Route::get('/cara-berbelanja', [WebsiteController::class, 'HowToShop'])->name('page.howtoshop');
+
+// admin route
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('/', [WebsiteController::class, 'AdminIndex'])->name('admin.dashboard');
 });
 
+// seller route
 Route::group(['middleware' => ['auth', 'seller'], 'prefix' => 'seller'], function () {
     Route::get('/', [WebsiteController::class, 'SellerIndex'])->name('seller.dashboard');
 });
 
+// buyer
 Route::group(['middleware' => ['auth', 'buyer'], 'prefix' => 'buyer'], function () {
     Route::get('/', [WebsiteController::class, 'BuyerIndex'])->name('buyer.dashboard');
 });
 
+Route::get('/test', function () {
+    return view('components/website.baselayout');
+});
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-//
 require __DIR__ . '/auth.php';

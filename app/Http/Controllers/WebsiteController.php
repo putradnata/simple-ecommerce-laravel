@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
+    public function index()
+    {
+        return view('website/pages.index');
+    }
+
     public function AfterRegister()
     {
         return view('components/register-success');
@@ -24,5 +29,15 @@ class WebsiteController extends Controller
     public function BuyerIndex()
     {
         return view('buyer/pages.index');
+    }
+
+    public function About()
+    {
+        return view('website/pages.about');
+    }
+
+    public function HowToShop()
+    {
+        return view('website/pages.how-to-shop');
     }
 }

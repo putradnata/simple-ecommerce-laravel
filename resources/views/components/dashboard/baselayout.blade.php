@@ -40,7 +40,7 @@
         </nav>
         <!-- /.navbar -->
 
-        @include('components/sidebar')
+        @include('components/dashboard/sidebar')
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -60,7 +60,7 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        @include('components/footer')
+        @include('components/dashboard/footer')
 
     </div>
     <!-- ./wrapper -->

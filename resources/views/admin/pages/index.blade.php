@@ -1,1 +1,1 @@
-ini page admin
+@extends('components/dashboard.baselayout')
