@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth', 'seller'], 'prefix' => 'seller'], functio
 });
 
 // buyer
-Route::group(['middleware' => ['auth', 'buyer'], 'prefix' => 'buyer'], function () {
+Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'], function () {
     Route::get('/', [WebsiteController::class, 'BuyerIndex'])->name('buyer.dashboard');
 });
 
