@@ -1,1 +1,1 @@
-ini page seller
+@extends('components/dashboard.baselayout')
