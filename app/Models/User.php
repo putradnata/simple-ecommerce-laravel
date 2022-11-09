@@ -24,6 +24,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
     ];
 
+    public function getDefaultValues()
+    {
+        return [
+            'name' => '',
+            'email' => '',
+            'password' => '',
+        ];
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -35,7 +35,7 @@
         @section('cardTitle', 'Data Seller')
 
     @section('cardAction')
-        <a class="btn btn-primary" href="#">
+        <a class="btn btn-primary" href="/admin/user/create?role=S">
             <i class="fa fa-plus"></i> Tambah Data Seller
         </a>
     @endsection
@@ -54,13 +54,25 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <th>e-Mail</th>
+                <th>Name</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
-
+            @foreach ($data as $b => $data)
+                <tr>
+                    <td>{{++$b}}</td>
+                    <td>{{$data->name}}</td>
+                    <td><form action={{ route('user.destroy', $data->id) }} method="POST">
+                        @csrf
+                        @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                    </form></td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

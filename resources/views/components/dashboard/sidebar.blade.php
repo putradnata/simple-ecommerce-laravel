@@ -17,7 +17,7 @@
                 <img src="https://i.ibb.co/LQbqXcG/53571-user.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">test123</a>
+                <a href="#" class="d-block">{{Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('bank.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-credit-card"></i>
                             <p>
                                 Data Bank
@@ -77,11 +77,21 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            <form method="GET" action="{{ route('user.index') }}">
+                                <li class="nav-item">
+                                    <input type="hidden" value="A" name="role">
+                                    <a class="nav-link" onclick="event.preventDefault();
+                                    this.closest('form').submit();">Admin</a>
+                                </li>
+                            </form>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Admin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Seller</a>
+                                <form method="GET" action="{{ route('user.index') }}">
+                                    <li class="nav-item">
+                                        <input type="hidden" value="S" name="role">
+                                        <a class="nav-link" onclick="event.preventDefault();
+                                        this.closest('form').submit();">Seller</a>
+                                    </li>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -107,7 +117,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('product.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-boxes"></i>
                             <p>
                                 Data Produk

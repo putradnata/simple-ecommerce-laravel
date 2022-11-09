@@ -35,7 +35,7 @@
         @section('cardTitle', 'Data Produk')
 
     @section('cardAction')
-        <a class="btn btn-primary" href="#">
+        <a class="btn btn-primary" href="{{ route('product.create') }}">
             <i class="fa fa-plus"></i> Tambah Data Produk
         </a>
     @endsection
@@ -54,13 +54,36 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <th>e-Mail</th>
+                <th>Nama Product</th>
+                <th>Gambar</th>
+                <th>Stok</th>
+                <th>Harga</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
-
+            @foreach ($data as $b => $data)
+                <tr>
+                    <td>{{++$b}}</td>
+                    <td>{{$data->name}}</td>
+                    @php
+                        $image = json_decode($data->image);
+                    @endphp
+                    <td>@for ($i=0; $i<count($image); $i++)
+                        <img src="{{ url('/product_image/' . $image[$i]) }}" width="150px" height="150px">
+                    @endfor</td>
+                    <td>{{$data->qty}}</td>
+                    <td>{{$data->price}}</td>
+                    <td><form action={{ route('product.destroy', $data->id) }} method="POST">
+                        @csrf
+                        @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                    </form></td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

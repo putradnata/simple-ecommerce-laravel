@@ -35,7 +35,7 @@
         @section('cardTitle', 'Data Bank')
 
     @section('cardAction')
-        <a class="btn btn-primary" href="#">
+        <a class="btn btn-primary" href="{{ route('bank.create') }}">
             <i class="fa fa-plus"></i> Tambah Data Bank
         </a>
     @endsection
@@ -55,12 +55,28 @@
             <tr>
                 <th>No.</th>
                 <th>Nama</th>
-                <th>e-Mail</th>
+                <th>Nama Bank</th>
+                <th>Nomor Rekening</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
-
+            @foreach ($data as $b => $data)
+                <tr>
+                    <td>{{++$b}}</td>
+                    <td>{{$data->name}}</td>
+                    <td>{{$data->bank}}</td>
+                    <td>{{$data->account_number}}</td>
+                    <td><form action={{ route('bank.destroy', $data->id) }} method="POST">
+                        @csrf
+                        @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                    </form></td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

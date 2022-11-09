@@ -18,12 +18,12 @@ class WebsiteController extends Controller
 
     public function AdminIndex()
     {
-        return view('admin/pages/banks.form');
+        return view('admin/pages.index');
     }
 
     public function SellerIndex()
     {
-        return view('seller/pages/orders/sent.index');
+        return view('seller/pages.index');
     }
 
     public function BuyerIndex()

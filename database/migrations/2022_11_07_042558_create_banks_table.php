@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->char('role', 1)->after('remember_token');
+        Schema::create('banks', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('account_number')->unique();
+            $table->string('bank');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('banks');
     }
 };

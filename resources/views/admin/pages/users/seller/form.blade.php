@@ -37,16 +37,90 @@
     @endsection
 
     @section('cardBody')
-
-        @if ($errors->any())
-            <div class="alert alert-danger errorAlert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
+        {{-- conditional form tag for CREATE and UPDATE --}}
+        @if (!isset($id))
+        <form method="post" action="{{ route('user.store') }}">
+        @else
+        <form method="post" action="{{ route('user.update', $id) }}">
+            @method('PUT')
         @endif
 
+        @csrf
 
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+            <div class="col-sm-10">
+                {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $user->name) }}"
+                    placeholder="Nama seller" name="name" autocomplete="name"/>
+
+                {{-- error message for input type above --}}
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">E-Mail Address</label>
+            <div class="col-sm-10">
+                {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email', $user->email) }}"
+                    placeholder="E-Mail seller" name="email" autocomplete="email"/>
+
+                {{-- error message for input type above --}}
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+                    placeholder="Password seller" name="password" autocomplete="password"/>
+
+                {{-- error message for input type above --}}
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password_confirmation" class="col-sm-2 col-form-label">Password Confirmation</label>
+            <div class="col-sm-10">
+                {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
+                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation"
+                    placeholder="Password confirmation seller" name="password_confirmation" autocomplete="password_confirmation"/>
+
+                {{-- error message for input type above --}}
+                @error('password_confirmation')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <input type="hidden" value="S" name="role">
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Submit" class="btn btn-primary justify-content-end" />
+                </div>
+            </div>
+        </div>
+        </form>
 
     @endsection
 

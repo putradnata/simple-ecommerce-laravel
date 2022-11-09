@@ -37,43 +37,76 @@
     @endsection
 
     @section('cardBody')
-
-        @if ($errors->any())
-            <div class="alert alert-danger errorAlert">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
+        {{-- conditional form tag for CREATE and UPDATE --}}
+        @if (!isset($id))
+            <form method="post" action="{{ route('bank.store') }}">
+        @else
+            <form method="post" action="{{ route('bank.update', $id) }}">
+                @method('PUT')
         @endif
 
-        {{-- conditional form tag for CREATE and UPDATE --}}
-        {{-- @if (!isset($request->id))
-            <form method="post" action="{{ route('admin-management.store') }}" enctype="multipart/form-data">
-            @else
-                <form method="post" action="{{ route('admin-management.update', $request->id) }}"
-                    enctype="multipart/form-data">
-                    @method('PUT')
-        @endif --}}
+        @csrf
 
-        {{-- @csrf --}}
         <div class="form-group row">
-            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+            <label for="name" class="col-sm-2 col-form-label">Nama</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-
-                {{-- <input type="text" class="form-control @error('name') is-invalid @enderror" id="nama"
-                    placeholder="Nama Admin" name="nama" value="{{ old('nama', $request->name) }}" autocomplete="nama"
-                    required/> --}}
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $bank->name) }}"
+                    placeholder="Nama pada rekening" name="name" autocomplete="name"/>
 
                 {{-- error message for input type above --}}
-                {{-- @error('name')
+                @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror --}}
+                @enderror
+            </div>
+        </div>
 
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="nama"
-                    placeholder="Nama Admin" name="nama" autocomplete="nama" required />
+        <div class="form-group row">
+            <label for="account_number" class="col-sm-2 col-form-label">Nomor Rekening</label>
+            <div class="col-sm-10">
+                {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
+                <input type="text" class="form-control @error('account_number') is-invalid @enderror" id="account_number" value="{{ old('account_number', $bank->account_number) }}"
+                    placeholder="Nomor rekening" name="account_number" autocomplete="account_number"/>
+
+                {{-- error message for input type above --}}
+                @error('account_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="bank" class="col-sm-2 col-form-label">Bank</label>
+            <div class="col-sm-10">
+                {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
+                <select class="form-control @error('bank') is-invalid @enderror" id="bank" name="bank" />
+                    <option value="">--Pilih Satu--</option>
+                    @if(!isset($id))
+                        <option value="BCA" {{ old('bank') }}>BCA</option>
+                        <option value="BNI" {{ old('bank') }}>BNI</option>
+                        <option value="BRI" {{ old('bank') }}>BRI</option>
+                        <option value="Mandiri" {{ old('bank') }}>Mandiri</option>
+                        <option value="Cimb Niaga" {{ old('bank') }}>Cimb Niaga</option>
+                        <option value="Permata Bank" {{ old('bank') }}>Permata Bank</option>
+                    @else
+                        <option value="BCA" {{ old('bank') == ($bank->bank ? "selected" : $bank->bank == "" ) ? "selected" : "" }}>BCA</option>
+                        <option value="BNI" {{ old('bank') == ($bank->bank ? "selected" : $bank->bank == "" ) ? "selected" : "" }}>BNI</option>
+                        <option value="BRI" {{ old('bank') == ($bank->bank ? "selected" : $bank->bank == "" ) ? "selected" : "" }}>BRI</option>
+                        <option value="Mandiri" {{ old('bank') == ($bank->bank ? "selected" : $bank->bank == "" ) ? "selected" : "" }}>Mandiri</option>
+                        <option value="Cimb Niaga" {{ old('bank') == ($bank->bank ? "selected" : $bank->bank == "" ) ? "selected" : "" }}>Cimb Niaga</option>
+                        <option value="Permata Bank" {{ old('bank') == ($bank->bank ? "selected" : $bank->bank == "" ) ? "selected" : "" }}>Permata Bank</option>
+                    @endif
+                </select>
+                {{-- error message for input type above --}}
+                @error('bank')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
 
@@ -84,7 +117,7 @@
                 </div>
             </div>
         </div>
-        {{-- </form> --}}
+        </form>
 
     @endsection
 

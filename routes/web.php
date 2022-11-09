@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\BankController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +28,14 @@ Route::get('/cara-berbelanja', [WebsiteController::class, 'HowToShop'])->name('p
 // admin route
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('/', [WebsiteController::class, 'AdminIndex'])->name('admin.dashboard');
+    Route::resource('/bank', BankController::class);
+    Route::resource('/user', UserController::class);
 });
 
 // seller route
-Route::group(['middleware' => ['auth', 'seller'], 'prefix' => 'seller'], function () {
+Route::group(['middleware' => ['auth', 'seller', 'verified'], 'prefix' => 'seller'], function () {
     Route::get('/', [WebsiteController::class, 'SellerIndex'])->name('seller.dashboard');
+    Route::resource('/product', ProductController::class);
 });
 
 // buyer
