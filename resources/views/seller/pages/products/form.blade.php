@@ -17,7 +17,7 @@
 
         @media screen and (min-width: 768px) {
             .custom-padding {
-                padding: 0 25vw !important;
+                padding: 0 10vw !important;
             }
         }
 

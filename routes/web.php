@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'
 });
 
 Route::get('/test', function () {
-    return view('components/website.baselayout');
+    return view('website/pages.checkout');
 });
 
 require __DIR__ . '/auth.php';

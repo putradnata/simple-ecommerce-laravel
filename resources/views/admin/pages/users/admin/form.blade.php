@@ -17,7 +17,7 @@
 
         @media screen and (min-width: 768px) {
             .custom-padding {
-                padding: 0 25vw !important;
+                padding: 0 10vw !important;
             }
         }
 
@@ -39,10 +39,10 @@
     @section('cardBody')
         {{-- conditional form tag for CREATE and UPDATE --}}
         @if (!isset($id))
-        <form method="post" action="{{ route('user.store') }}">
-        @else
-        <form method="post" action="{{ route('user.update', $id) }}">
-            @method('PUT')
+            <form method="post" action="{{ route('user.store') }}">
+            @else
+                <form method="post" action="{{ route('user.update', $id) }}">
+                    @method('PUT')
         @endif
 
         @csrf
@@ -51,8 +51,9 @@
             <label for="name" class="col-sm-2 col-form-label">Nama</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $user->name) }}"
-                    placeholder="Nama administrator" name="name" autocomplete="name"/>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                    value="{{ old('name', $user->name) }}" placeholder="Nama administrator" name="name"
+                    autocomplete="name" />
 
                 {{-- error message for input type above --}}
                 @error('name')
@@ -67,8 +68,9 @@
             <label for="email" class="col-sm-2 col-form-label">E-Mail Address</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email', $user->email) }}"
-                    placeholder="E-Mail administrator" name="email" autocomplete="email"/>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                    value="{{ old('email', $user->email) }}" placeholder="E-Mail administrator" name="email"
+                    autocomplete="email" />
 
                 {{-- error message for input type above --}}
                 @error('email')
@@ -84,7 +86,7 @@
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                    placeholder="Password admin" name="password" autocomplete="password"/>
+                    placeholder="Password admin" name="password" autocomplete="password" />
 
                 {{-- error message for input type above --}}
                 @error('password')
@@ -99,8 +101,9 @@
             <label for="password_confirmation" class="col-sm-2 col-form-label">Password Confirmation</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation"
-                    placeholder="Password confirmation admin" name="password_confirmation" autocomplete="password_confirmation"/>
+                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                    id="password_confirmation" placeholder="Password confirmation admin" name="password_confirmation"
+                    autocomplete="password_confirmation" />
 
                 {{-- error message for input type above --}}
                 @error('password_confirmation')
