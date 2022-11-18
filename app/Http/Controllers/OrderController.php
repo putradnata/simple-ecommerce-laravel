@@ -3,83 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\DetailOrder;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function paymentUpdate(Request $request, $id)
     {
-        //
+        if($request->status == 'a'){
+            $data_status['status'] = 'On Process';
+        }else{
+            $data_status['status'] = 'Payment Failed';
+        }
+
+        $data = DetailOrder::where('order_id', $id)->update($data_status);
+
+        return redirect('admin/order/order-in');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function createShipping($id)
     {
-        //
+        return view('layouts.seller.uploadresi', ['invoice' => $id]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function storeShipping(Request $request)
     {
-        //
-    }
+        $data_status = $request->validate([
+            'airwaybill' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
+        $data_status['status'] = "Shipping";
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
+        $data = DetailOrder::where('seller_id', Auth::user()->id)->update($data_status);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
+        return redirect('seller/order');
     }
 }

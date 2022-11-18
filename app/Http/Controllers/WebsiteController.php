@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class WebsiteController extends Controller
 {
     public function index()
     {
-        return view('website/pages.index');
+        $product = Product::where('status', 'Active')->get();
+
+        return view('website/pages.index', [
+            'data' => $product,
+        ]);
     }
 
     public function AfterRegister()
@@ -28,7 +33,11 @@ class WebsiteController extends Controller
 
     public function BuyerIndex()
     {
-        return view('buyer/pages.index');
+        $product = Product::where('status', 'Active')->get();
+
+        return view('website/pages.index', [
+            'data' => $product,
+        ]);
     }
 
     public function About()

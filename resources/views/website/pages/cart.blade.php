@@ -8,50 +8,48 @@
                 <h1 class="text-xl font-bold text-left w-full">Keranjang</h1>
                 <div class="flex flex-row gap-5 w-full">
                     <section class="bg-white rounded-md shadow-lg w-full p-6">
+                        @php
+                            $total = 0;
+                        @endphp
+                        @foreach ($data as $key => $data)
                         <div class="product-card">
                             <div class="product-card__title">
-                                <strong class="text-sm">Nama Toko Disini</strong>
+                                <strong class="text-sm">{{$data['seller_name']}}</strong>
                             </div>
+                            @for ($i=0; $i<count($data['product']); $i++)
+                            @php
+                                $total += $data['product'][$i]['price'] * $data['product'][$i]['qty'];
+                            @endphp
                             <div class="product-card__content">
                                 <div
                                     class="product-card__product--wrapper flex flex-row gap-2 items-center justify-start px-2 py-4 flex-wrap">
                                     <div class="product-card__content--photo">
-                                        <img
-                                            src="https://images.tokopedia.net/img/cache/100-square/VqbcmM/2020/11/5/19196e47-8a34-4453-9e9c-e2e7815053a7.jpg.webp?ect=4g" />
+                                        @php
+                                            $image = json_decode($data['product'][$i]['image']);
+                                        @endphp
+                                        @for ($s=0; $s<1; $s++)
+                                            <img class="img-fluid" src="{{ url('/product_image/' . $image[0]) }}" width="150px" height="150px">
+                                        @endfor
                                     </div>
                                     <div class="product-card__content--product-text">
                                         <div class="product-card__content--product-name">
                                             <span class="text-sm">
-                                                Baterai Hippo Xiaomi Redmi 7 / Note 8 BN46 4000 mAh Garansi Resmi
+                                                Product Name : {{$data['product'][$i]['name']}}
                                             </span>
                                         </div>
-                                        <div class="product-card__Cotnent--product-price text-sm font-bold">Rp.5555555</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <div class="product-card__title">
-                                <strong class="text-sm">Nama Toko Disini</strong>
-                            </div>
-                            <div class="product-card__content">
-                                <div
-                                    class="product-card__product--wrapper flex flex-row gap-2 items-center justify-start px-2 py-4 flex-wrap">
-                                    <div class="product-card__content--photo">
-                                        <img
-                                            src="https://images.tokopedia.net/img/cache/100-square/VqbcmM/2020/11/5/19196e47-8a34-4453-9e9c-e2e7815053a7.jpg.webp?ect=4g" />
-                                    </div>
-                                    <div class="product-card__content--product-text">
                                         <div class="product-card__content--product-name">
                                             <span class="text-sm">
-                                                Baterai Hippo Xiaomi Redmi 7 / Note 8 BN46 4000 mAh Garansi Resmi
+                                                Qty : {{$data['product'][$i]['qty']}}
                                             </span>
                                         </div>
-                                        <div class="product-card__Cotnent--product-price text-sm font-bold">Rp.5555555</div>
+
+                                        <div class="product-card__Cotnent--product-price text-sm font-bold">Price : Rp.{{$data['product'][$i]['price']}}</div>
                                     </div>
                                 </div>
                             </div>
+                            @endfor
                         </div>
+                        @endforeach
                     </section>
                     <section
                         class="bg-white shadow-lg rounded-md p-6 w-full flex flex-col justify-between grow-0 h-fit gap-y-3">
@@ -59,7 +57,7 @@
                         <div class="cart-summary__product-count text-sm flex flex-row justify-between">
                             <div class="cart-summary__product-count--title text-sm">Total Belanja</div>
                             <div class="cart-summary__product-count--price">
-                                Rp. 55555
+                                Rp. {{$total}}
                             </div>
                         </div>
                         <div class="cart-summary__product-count text-sm flex flex-row justify-between">
@@ -72,11 +70,11 @@
                         <div class="cart-summary__product-count text-sm flex flex-row justify-between">
                             <div class="cart-summary__product-count--title text-sm font-bold">Total Harga</div>
                             <div class="cart-summary__product-count--price font-bold">
-                                Rp. 55555
+                                Rp. {{$total}}
                             </div>
                         </div>
                         <div>
-                            <button class="bg-green-600 text-white rounded-md p-2 w-full">Beli</button>
+                            <a href="{{ route('buyer.payment') }}"><button class="bg-green-600 text-white rounded-md p-2 w-full">Beli</button></a>
                         </div>
                     </section>
                 </div>

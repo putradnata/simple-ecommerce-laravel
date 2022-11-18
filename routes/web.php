@@ -5,6 +5,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,11 @@ Route::group(['middleware' => ['auth', 'seller', 'verified'], 'prefix' => 'selle
 // buyer
 Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'], function () {
     Route::get('/', [WebsiteController::class, 'BuyerIndex'])->name('buyer.dashboard');
+    Route::post('/add-to-cart/{id}', [CustomerController::class, 'addToCart'])->name('buyer.addToCart');
+    Route::get('/show-cart', [CustomerController::class, 'showCart'])->name('buyer.showCart');
+    Route::get('/payment', [CustomerController::class, 'order'])->name('buyer.payment');
+    Route::post('/checkout', [CustomerController::class, 'checkout'])->name('buyer.checkout');
+
 });
 
 Route::get('/test', function () {
