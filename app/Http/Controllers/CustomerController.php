@@ -63,7 +63,7 @@ class CustomerController extends Controller
             }
         }
 
-        return view('website/pages.cart',[
+        return view('buyer/pages.cart',[
             'data' => $data,
         ]);
     }
@@ -78,7 +78,7 @@ class CustomerController extends Controller
 
         $data_bank = Bank::all();
 
-        return view('website/pages.checkout',[
+        return view('buyer/pages.checkout',[
             'data' => $data_cart,
             'data_bank' => $data_bank,
         ]);

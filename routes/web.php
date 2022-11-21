@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'
 });
 
 Route::get('/test', function () {
-    return view('website/pages.checkout');
+    return view('admin/pages.profile');
 });
 
 require __DIR__ . '/auth.php';

@@ -243,7 +243,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 align-self-center">
-                    <img src="https://svgshare.com/i/mc5.svg">
+                    <img src="https://svgshare.com/i/mjt.svg">
                 </div>
                 <div class="col-md-6 align-self-center">
                     <h1>Terima Kasih telah Mendaftar!</h1>

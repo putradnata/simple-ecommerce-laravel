@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    {{-- <script>
         tailwind.config = {
             module.exports = {
                 prefix: 'tw-',
             }
         }
-    </script>
+    </script> --}}
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -79,7 +79,7 @@
             height: 100%;
             width: 100%;
             background: #28a745;
-            opacity: 1;
+            opacity: 0.2;
             z-index: 12;
         }
 
@@ -276,6 +276,7 @@
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
+                <img src="{{ asset('assets/shop/images/carousel-1.jpg') }}" />
                 {{-- <img src="https://i.ibb.co/LJzrb9J/ales-nesetril-Im7l-Zjxe-Lhg-unsplash.jpg" alt=""> --}}
                 <div class="text">
                     <span class="text-1">Selamat Datang <br /> </span>
@@ -283,6 +284,7 @@
                 </div>
             </div>
             <div class="back">
+                <img src="{{ asset('assets/shop/images/carousel-1.jpg') }}" />
                 {{-- <img class="backImg" src="https://i.ibb.co/LJzrb9J/ales-nesetril-Im7l-Zjxe-Lhg-unsplash.jpg"
                     alt=""> --}}
                 <div class="text">
@@ -304,15 +306,15 @@
 
                     <div class="mt-5">
                         @if ($errors->any())
-                        <div class="mt-4 font-medium text-red-600">
-                            {{ __('Whoops! Something went wrong.') }}
-                        </div>
+                            <div class="mt-4 font-medium text-red-600">
+                                {{ __('Whoops! Something went wrong.') }}
+                            </div>
 
-                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         @endif
                     </div>
 
@@ -321,18 +323,20 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" placeholder="Enter your email" required value="{{ old('email') }}" required autofocus name="email">
+                                <input type="email" placeholder="Enter your email" required
+                                    value="{{ old('email') }}" required autofocus name="email">
                             </div>
 
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" required required autocomplete="current-password" name="password">
+                                <input type="password" placeholder="Enter your password" required required
+                                    autocomplete="current-password" name="password">
                             </div>
                             <div class="text">
                                 @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}">
-                                    Lupa Password?
-                                </a>
+                                    <a href="{{ route('password.request') }}">
+                                        Lupa Password?
+                                    </a>
                                 @endif
                             </div>
                             {{-- <a href="#">Forgot password?</a> --}}
@@ -357,15 +361,15 @@
 
                     <div class="mt-5">
                         @if ($errors->any())
-                        <div class="mt-4 font-medium text-red-600">
-                            {{ __('Whoops! Something went wrong.') }}
-                        </div>
+                            <div class="mt-4 font-medium text-red-600">
+                                {{ __('Whoops! Something went wrong.') }}
+                            </div>
 
-                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         @endif
                     </div>
 
@@ -374,19 +378,23 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder="Enter your name" />
+                                <input id="name" class="block mt-1 w-full" type="text" name="name"
+                                    value="{{ old('name') }}" required autofocus placeholder="Enter your name" />
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ old('email') }}" required placeholder="Enter your email" />
+                                <input id="email" class="block mt-1 w-full" type="email" name="email"
+                                    value="{{ old('email') }}" required placeholder="Enter your email" />
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" placeholder="Enter your password" />
+                                <input id="password" class="block mt-1 w-full" type="password" name="password" required
+                                    autocomplete="new-password" placeholder="Enter your password" />
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required placeholder="Enter your password again" />
+                                <input id="password_confirmation" class="block mt-1 w-full" type="password"
+                                    name="password_confirmation" required placeholder="Enter your password again" />
                             </div>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit">
