@@ -127,7 +127,11 @@
 
                             @if (Route::has('login'))
                                 @auth
-                                    <a href="#" class="nav-item nav-link">Riwayat Pemesanan</a>
+                                <form method="GET" action="{{ route('buyer.order-history') }}">
+                                    <input type="hidden" value="Waiting Payment" name="status">
+                                    <a class="nav-item nav-link" onclick="event.preventDefault();
+                                    this.closest('form').submit();">Riwayat Pemesanan</a>
+                                </form>
                                 @endauth
                             @endif
                             {{-- <a href="shop.html" class="nav-item nav-link">Shop</a>

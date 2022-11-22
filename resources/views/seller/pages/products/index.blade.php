@@ -55,7 +55,6 @@
             <tr>
                 <th>No.</th>
                 <th>Nama Product</th>
-                <th>Gambar</th>
                 <th>Stok</th>
                 <th>Harga</th>
                 <th class="text-center">Aksi</th>
@@ -66,22 +65,9 @@
                 <tr>
                     <td>{{++$b}}</td>
                     <td>{{$data->name}}</td>
-                    @php
-                        $image = json_decode($data->image);
-                    @endphp
-                    <td>@for ($i=0; $i<count($image); $i++)
-                        <img src="{{ url('/product_image/' . $image[$i]) }}" width="150px" height="150px">
-                    @endfor</td>
                     <td>{{$data->qty}}</td>
                     <td>{{$data->price}}</td>
-                    <td><form action={{ route('product.destroy', $data->id) }} method="POST">
-                        @csrf
-                        @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                                Delete
-                            </button>
-                    </form></td>
+                    <td></td>
                 </tr>
             @endforeach
         </tbody>

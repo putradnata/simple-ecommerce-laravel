@@ -10,6 +10,7 @@ use App\Models\Bank;
 use App\Models\Order;
 use App\Models\DetailOrder;
 use Auth;
+use Session;
 
 class CustomerController extends Controller
 {
@@ -128,10 +129,47 @@ class CustomerController extends Controller
             $delete_cart = Cart::where('id', $data_cart[$i]->id)->delete();
         }
 
-        // return view('website/pages.checkout',[
-        //     'data' => $data_cart,
-        //     'data_bank' => $data_bank,
-        // ]);
+        return redirect('buyer/');
+    }
+
+    public function orderHistory(Request $request)
+    {
+        if($request->status == "Checking Payment"){
+            $data = Order::join('detail_orders', 'detail_orders.order_id', 'orders.id')
+                        ->where('orders.buyer_id', Auth::user()->id)
+                        ->where('detail_orders.status', "Checking Payment")
+                        ->orWhere('detail_orders.status', "Payment Failed")
+                        ->select('orders.*','detail_orders.status')
+                        ->distinct()
+                        ->get();
+        }else if($request->status == "Waiting Payment"){
+            $data = Order::join('detail_orders', 'detail_orders.order_id', 'orders.id')
+                        ->where('orders.buyer_id', Auth::user()->id)
+                        ->where('detail_orders.status', "Waiting Payment")
+                        ->select('orders.*','detail_orders.status')
+                        ->distinct()
+                        ->get();
+        }else{
+            $data = Order::join('detail_orders', 'detail_orders.order_id', 'orders.id')
+                        ->where('orders.buyer_id', Auth::user()->id)
+                        ->where('detail_orders.status', $request->status)
+                        ->distinct()
+                        ->get();
+        }
+
+        return view('buyer/pages.order-history', ['data' => $data, 'status' => $request->status]);
+    }
+
+    public function paymentView($id)
+    {
+        $data = Order::findOrFail($id);
+        $detail = DetailOrder::where('order_id', $id)->get();
+
+        return view('buyer/pages.upload-payment', [
+            'data' => $data,
+            'detail' => $detail,
+            'id' => $id,
+        ]);
     }
 
     public function paymentUpload(Request $request, $id)
@@ -142,7 +180,7 @@ class CustomerController extends Controller
 
         $image    = $request->file('attachment');
         $new_name =   uniqid().'_'.time().'.'.$image->extension();
-        $image->move(public_path('photos'), $new_name);
+        $image->move(public_path('payment_image'), $new_name);
 
         $data_order['payment_img'] = $new_name;
 
@@ -152,7 +190,7 @@ class CustomerController extends Controller
 
         $data_detail = DetailOrder::where('order_id', $id)->update($data_detail_order);
 
-        //return redirect('buyer/order/order-list');
+        return redirect("http://simple-ecommerce-laravel.test/buyer/order-history?status=Checking%20Payment");
     }
 
 }

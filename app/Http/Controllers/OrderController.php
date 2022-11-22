@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function paymentIndex()
+    {
+        $data = Order::join('detail_orders', 'detail_orders.order_id', 'orders.id')
+                        ->select('orders.*','detail_orders.status')
+                        ->distinct()
+                        ->get();
+
+        return view('admin/pages/payment.index',[
+            'data' => $data,
+        ]);
+    }
+
     public function paymentUpdate(Request $request, $id)
     {
         if($request->status == 'a'){
@@ -18,7 +30,7 @@ class OrderController extends Controller
 
         $data = DetailOrder::where('order_id', $id)->update($data_status);
 
-        return redirect('admin/order/order-in');
+        return redirect('admin/payment');
     }
 
     public function createShipping($id)

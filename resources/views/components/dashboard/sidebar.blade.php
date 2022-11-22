@@ -44,6 +44,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('order.payment') }}" class="nav-link">
+                            <i class="nav-icon fas fa-money-bill-alt"></i>
+                            <p>
+                                Data Pembayaran
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-clipboard"></i>
                             <p>

@@ -6,6 +6,7 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/', [WebsiteController::class, 'AdminIndex'])->name('admin.dashboard');
     Route::resource('/bank', BankController::class);
     Route::resource('/user', UserController::class);
+    Route::get('/payment', [OrderController::class, 'paymentIndex'])->name('order.payment');
+    Route::post('/payment-update/{id}', [OrderController::class, 'paymentUpdate'])->name('order.payment-update');
 });
 
 // seller route
@@ -46,11 +49,13 @@ Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'
     Route::get('/show-cart', [CustomerController::class, 'showCart'])->name('buyer.showCart');
     Route::get('/payment', [CustomerController::class, 'order'])->name('buyer.payment');
     Route::post('/checkout', [CustomerController::class, 'checkout'])->name('buyer.checkout');
-
+    Route::get('/order-history', [CustomerController::class, 'orderHistory'])->name('buyer.order-history');
+    Route::get('/payment-order/{id}', [CustomerController::class, 'paymentView'])->name('buyer.payment-view');
+    Route::post('/payment-upload/{id}', [CustomerController::class, 'paymentUpload'])->name('buyer.payment-upload');
 });
 
 Route::get('/test', function () {
-    return view('admin/pages.profile');
+    return view('buyer/pages.upload-payment');
 });
 
 require __DIR__ . '/auth.php';
