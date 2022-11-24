@@ -503,7 +503,7 @@
                             class="text-primary font-weight-bold border border-white px-3 mr-1">Tenun</span>Songket
                     </h1>
                 </a>
-                <p>Penual kain tenun songket termurah dan paling berkualitas di Bali. Banyak pilihan motif dengan harga yang variatif.</p>
+                <p>Penjual kain tenun songket termurah dan paling berkualitas di Bali. Banyak pilihan motif dengan harga yang variatif.</p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Banjar Dinas Klungah, Desa Wisma Kerta,
                     Kecamatan Sidemen, Kabupaten Karangasem, Bali 80864</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@tenun-songket.com</p>
