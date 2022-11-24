@@ -90,9 +90,9 @@ class UserController extends Controller
         }
 
         if($request->role == 'A'){
-            return redirect('admin/user?role=A')->with('success','Data Bank Berhasil Ditambahkan!');
+            return redirect('admin/user?role=A')->with('success','Data Admin Berhasil Ditambahkan!');
         }else if ($request->role == 'S'){
-            return redirect('admin/user?role=S')->with('success','Data Bank Berhasil Ditambahkan!');
+            return redirect('admin/user?role=S')->with('success','Data Penjual Berhasil Ditambahkan!');
         }
     }
 
@@ -144,7 +144,7 @@ class UserController extends Controller
         if($role == 'A'){
             return redirect('admin/user?role=A')->with('success','Data Admin Berhasil Dihapus!');
         }else if ($role == 'S'){
-            return redirect('admin/user?role=S')->with('success','Data Seller Berhasil Dihapus!');
+            return redirect('admin/user?role=S')->with('success','Data Penjual Berhasil Dihapus!');
         }
     }
 }

@@ -137,6 +137,6 @@ class ProductController extends Controller
     {
         $product = Product::where('id',$id)->delete();
 
-        return redirect('seller/product')->with('success','Data Product Berhasil Dihapus!');
+        return redirect('seller/product')->with('success','Data Produk Berhasil Dihapus!');
     }
 }
