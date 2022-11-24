@@ -17,7 +17,7 @@
                 <img src="https://i.ibb.co/LQbqXcG/53571-user.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-truck"></i>
                             <p>
@@ -75,7 +75,7 @@
                                 <a href="#" class="nav-link">Jasa Pengiriman</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
@@ -88,97 +88,105 @@
                             <form method="GET" action="{{ route('user.index') }}">
                                 <li class="nav-item">
                                     <input type="hidden" value="A" name="role">
-                                    <a class="nav-link" onclick="event.preventDefault();
+                                    <a class="nav-link"
+                                        onclick="event.preventDefault();
                                     this.closest('form').submit();">Admin</a>
                                 </li>
                             </form>
                             <li class="nav-item">
                                 <form method="GET" action="{{ route('user.index') }}">
-                                    <li class="nav-item">
-                                        <input type="hidden" value="S" name="role">
-                                        <a class="nav-link" onclick="event.preventDefault();
+                            <li class="nav-item">
+                                <input type="hidden" value="S" name="role">
+                                <a class="nav-link"
+                                    onclick="event.preventDefault();
                                         this.closest('form').submit();">Penjual</a>
-                                    </li>
-                                </form>
                             </li>
-                        </ul>
+                            </form>
                     </li>
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="nav-link" href="route('logout')"
-                                onclick="event.preventDefault();
+            </ul>
+            </li>
+            <li class="nav-item">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="nav-link" href="route('logout')"
+                        onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                <span class="btn btn-danger w-100">
-                                    <i class="nav-icon fas fa-sign-out"></i> {{ __('Keluar') }}
-                                </span>
-                            </a>
-                        </form>
-                    </li>
-                @elseif (Auth::user()->role === 'S')
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-dashboard"></i>
-                            <p>
-                                Dashboard
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('product.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-boxes"></i>
-                            <p>
-                                Data Produk
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Data Pesanan
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <form method="GET" action="{{ route('order.index-order') }}">
-                                <li class="nav-item">
-                                    <input type="hidden" value="On Process" name="status">
-                                    <a class="nav-link" onclick="event.preventDefault();
-                                    this.closest('form').submit();">Pesanan Masuk</a>
-                                </li>
-                            </form>
-                            <form method="GET" action="{{ route('order.index-order') }}">
-                                <li class="nav-item">
-                                    <input type="hidden" value="Shipping" name="status">
-                                    <a class="nav-link" onclick="event.preventDefault();
-                                    this.closest('form').submit();">Pesanan Dikirim</a>
-                                </li>
-                            </form>
-                            <form method="GET" action="{{ route('order.index-order') }}">
-                                <li class="nav-item">
-                                    <input type="hidden" value="All" name="status">
-                                    <a class="nav-link" onclick="event.preventDefault();
-                                    this.closest('form').submit();">Informasi Pesanan</a>
-                                </li>
-                            </form>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="nav-link" href="route('logout')"
+                        <span class="btn btn-danger w-100">
+                            <i class="nav-icon fas fa-sign-out"></i> {{ __('Keluar') }}
+                        </span>
+                    </a>
+                </form>
+            </li>
+        @elseif (Auth::user()->role === 'S')
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-dashboard"></i>
+                    <p>
+                        Dashboard
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('product.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-boxes"></i>
+                    <p>
+                        Data Produk
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        Data Pesanan
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <form method="GET" action="{{ route('order.index-order') }}">
+                        <li class="nav-item">
+                            <input type="hidden" value="On Process" name="status">
+                            <a class="nav-link"
                                 onclick="event.preventDefault();
+                                    this.closest('form').submit();">Pesanan
+                                Masuk</a>
+                        </li>
+                    </form>
+                    <form method="GET" action="{{ route('order.index-order') }}">
+                        <li class="nav-item">
+                            <input type="hidden" value="Shipping" name="status">
+                            <a class="nav-link"
+                                onclick="event.preventDefault();
+                                    this.closest('form').submit();">Pesanan
+                                Dikirim</a>
+                        </li>
+                    </form>
+                    <form method="GET" action="{{ route('order.index-order') }}">
+                        <li class="nav-item">
+                            <input type="hidden" value="All" name="status">
+                            <a class="nav-link"
+                                onclick="event.preventDefault();
+                                    this.closest('form').submit();">Informasi
+                                Pesanan</a>
+                        </li>
+                    </form>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="nav-link" href="route('logout')"
+                        onclick="event.preventDefault();
                                             this.closest('form').submit();">
-                                <span class="btn btn-danger w-100">
-                                    <i class="nav-icon fas fa-sign-out"></i> {{ __('Keluar') }}
-                                </span>
-                            </a>
-                        </form>
-                    </li>
-                @elseif (Auth::user()->role === 'B')
-                @endif
+                        <span class="btn btn-danger w-100">
+                            <i class="nav-icon fas fa-sign-out"></i> {{ __('Keluar') }}
+                        </span>
+                    </a>
+                </form>
+            </li>
+        @elseif (Auth::user()->role === 'B')
+            @endif
 
             </ul>
         </nav>
