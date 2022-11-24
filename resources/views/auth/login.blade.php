@@ -323,13 +323,13 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="email" placeholder="Enter your email" required
+                                <input type="email" placeholder="Masukkan email anda" required
                                     value="{{ old('email') }}" required autofocus name="email">
                             </div>
 
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" required required
+                                <input type="password" placeholder="Masukkan kata sandi anda" required required
                                     autocomplete="current-password" name="password">
                             </div>
                             <div class="text">
