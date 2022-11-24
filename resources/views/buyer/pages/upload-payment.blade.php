@@ -11,13 +11,13 @@
         <li>No. {{ ++$d }}. | {{ $detail->product_name }} | {{ $detail->qty }} | Rp. {{ $detail->price }}</li>
         @endforeach
 
-        <label>Total : Rp. {{$data->total}}</label><br>
+        <label>Jumlah : Rp. {{$data->total}}</label><br>
 
         <form action="{{ route('buyer.payment-upload', $id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label>Bukti Pembayaran</label>
             <input type="file" name="attachment" />
-            <button type="submit">Upload</button>
+            <button type="submit">Unggah</button>
         </form>
     </body>
 </html>

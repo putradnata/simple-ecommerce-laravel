@@ -54,7 +54,7 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama Product</th>
+                <th>Nama Produk</th>
                 <th>Stok</th>
                 <th>Harga</th>
                 <th class="text-center">Aksi</th>
@@ -66,8 +66,21 @@
                     <td>{{++$b}}</td>
                     <td>{{$data->name}}</td>
                     <td>{{$data->qty}}</td>
-                    <td>{{$data->price}}</td>
-                    <td></td>
+                    <td>Rp. {{$data->price}}</td>
+                    <td>
+                        <form action={{ route('product.destroy', $data->id) }} method="POST">
+                        @csrf
+                        @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
+                        </form>
+                        <button type="submit" class="btn btn-sm btn-info">
+                            <i class="fas fa-image"></i>
+                            Lihat Detil
+                        </button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

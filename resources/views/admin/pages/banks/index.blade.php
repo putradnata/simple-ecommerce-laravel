@@ -72,7 +72,7 @@
                         @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
-                                Delete
+                                Hapus
                             </button>
                     </form></td>
                 </tr>

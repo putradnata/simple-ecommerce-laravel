@@ -48,11 +48,11 @@
         @csrf
 
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+            <label for="name" class="col-sm-2 col-form-label">Nama Pada Rekening</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                    value="{{ old('name', $bank->name) }}" placeholder="Nama pada rekening" name="name"
+                    value="{{ old('name', $bank->name) }}" placeholder="Masukkan nama pada rekening" name="name"
                     autocomplete="name" />
 
                 {{-- error message for input type above --}}
@@ -69,7 +69,7 @@
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="text" class="form-control @error('account_number') is-invalid @enderror" id="account_number"
-                    value="{{ old('account_number', $bank->account_number) }}" placeholder="Nomor rekening"
+                    value="{{ old('account_number', $bank->account_number) }}" placeholder="Masukkan nomor rekening"
                     name="account_number" autocomplete="account_number" />
 
                 {{-- error message for input type above --}}

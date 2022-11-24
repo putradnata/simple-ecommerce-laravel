@@ -119,7 +119,7 @@
                         <th>No.</th>
                         <th>Kode Transaksi</th>
                         <th>Pembayaran</th>
-                        <th>Total Pembayaran</th>
+                        <th>Jumlah Pembayaran</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -134,7 +134,7 @@
                         @if ($data->status == 'Waiting Payment')
                         <a href= "{{ route('buyer.payment-view', $data->id) }}"><button type="submit" class="btn btn-sm btn-info">
                             <i class="fa fa-image"></i>
-                            Upload Bukti Pembayaran
+                            Unggah Bukti Pembayaran
                         </button></a>
                         @endif
                         <a href="#" class="btn btn-success">
@@ -148,7 +148,7 @@
                         <th>No.</th>
                         <th>Kode Transaksi</th>
                         <th>Pembayaran</th>
-                        <th>Total Pembayaran</th>
+                        <th>Jumlah Pembayaran</th>
                         <th>Status</th>
                     </tr>
                     @foreach ($data as $d => $data)

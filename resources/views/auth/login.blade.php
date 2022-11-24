@@ -296,7 +296,7 @@
         <div class="forms">
             <div class="form-content">
                 <div class="login-form">
-                    <div class="title">Login</div>
+                    <div class="title">Masuk</div>
 
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -335,7 +335,7 @@
                             <div class="text">
                                 @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}">
-                                        Lupa Password?
+                                        Lupa Kata Sandi?
                                     </a>
                                 @endif
                             </div>
@@ -344,8 +344,7 @@
                             <div class="button input-box">
                                 <input type="submit" value="Masuk">
                             </div>
-                            <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup
-                                    now</label>
+                            <div class="text sign-up-text">Belum memiliki akun? <label for="flip">Daftar Sekarang</label>
                             </div>
                         </div>
                     </form>
@@ -379,27 +378,27 @@
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
                                 <input id="name" class="block mt-1 w-full" type="text" name="name"
-                                    value="{{ old('name') }}" required autofocus placeholder="Enter your name" />
+                                    value="{{ old('name') }}" required autofocus placeholder="Masukkan nama anda" />
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
                                 <input id="email" class="block mt-1 w-full" type="email" name="email"
-                                    value="{{ old('email') }}" required placeholder="Enter your email" />
+                                    value="{{ old('email') }}" required placeholder="Masukkan email anda" />
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
                                 <input id="password" class="block mt-1 w-full" type="password" name="password" required
-                                    autocomplete="new-password" placeholder="Enter your password" />
+                                    autocomplete="new-password" placeholder="Masukkan kata sandi anda" />
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
                                 <input id="password_confirmation" class="block mt-1 w-full" type="password"
-                                    name="password_confirmation" required placeholder="Enter your password again" />
+                                    name="password_confirmation" required placeholder="Masukkan kata sandi anda sekali lagi" />
                             </div>
                             <div class="button input-box">
-                                <input type="submit" value="Sumbit">
+                                <input type="submit" value="Submit">
                             </div>
-                            <div class="text sign-up-text">Sudah memiliki akun? <label for="flip">Login
+                            <div class="text sign-up-text">Sudah memiliki akun? <label for="flip">Masuk
                                     Sekarang</label>
                             </div>
                         </div>

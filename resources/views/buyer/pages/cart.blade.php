@@ -34,16 +34,16 @@
                                     <div class="product-card__content--product-text">
                                         <div class="product-card__content--product-name">
                                             <span class="text-sm">
-                                                Product Name : {{$data['product'][$i]['name']}}
+                                                Nama Produk : {{$data['product'][$i]['name']}}
                                             </span>
                                         </div>
                                         <div class="product-card__content--product-name">
                                             <span class="text-sm">
-                                                Qty : {{$data['product'][$i]['qty']}}
+                                                Kuantiti : {{$data['product'][$i]['qty']}}
                                             </span>
                                         </div>
 
-                                        <div class="product-card__Cotnent--product-price text-sm font-bold">Price : Rp.{{$data['product'][$i]['price']}}</div>
+                                        <div class="product-card__Cotnent--product-price text-sm font-bold">Harga : Rp.{{$data['product'][$i]['price']}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -55,20 +55,20 @@
                         class="bg-white shadow-lg rounded-md p-6 w-full flex flex-col justify-between grow-0 h-fit gap-y-3">
                         <h2 class="font-bold">Ringkasan Belanja</h2>
                         <div class="cart-summary__product-count text-sm flex flex-row justify-between">
-                            <div class="cart-summary__product-count--title text-sm">Total Belanja</div>
+                            <div class="cart-summary__product-count--title text-sm">Jumlah Belanja</div>
                             <div class="cart-summary__product-count--price">
                                 Rp. {{$total}}
                             </div>
                         </div>
                         <div class="cart-summary__product-count text-sm flex flex-row justify-between">
-                            <div class="cart-summary__product-count--title text-sm">Total Diskon</div>
+                            <div class="cart-summary__product-count--title text-sm">Jumlah Diskon</div>
                             <div class="cart-summary__product-count--price">
                                 Rp. 0
                             </div>
                         </div>
                         <hr />
                         <div class="cart-summary__product-count text-sm flex flex-row justify-between">
-                            <div class="cart-summary__product-count--title text-sm font-bold">Total Harga</div>
+                            <div class="cart-summary__product-count--title text-sm font-bold">Jumlah Harga</div>
                             <div class="cart-summary__product-count--price font-bold">
                                 Rp. {{$total}}
                             </div>

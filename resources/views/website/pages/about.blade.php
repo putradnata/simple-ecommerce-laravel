@@ -56,11 +56,11 @@
       <thead>
         <tr>
           <th>Email :</th>
-          <td>kaintenunsongjet@gmail.com</td>
+          <td>info@tenun-songket.com</td>
         </tr>
         <tr>
           <th>Telepon :</th>
-          <td>+6287 861 393 876</td>
+          <td>+62 878 613 938 76</td>
         </tr>
         <tr>
           <th>Alamat :</th>

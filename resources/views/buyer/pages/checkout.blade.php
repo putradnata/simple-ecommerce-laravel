@@ -98,9 +98,9 @@
                         @endfor
                         <div class="flex flex-col">
                             <span class="font-bold"></span>
-                            <p class="text-italic"> Product Name : {{$data->name}}</p>
-                            <p class="text-italic"> Qty : {{$data->qty}}</p>
-                            <span class="font-bold">Price : Rp. {{$data->price}}</span>
+                            <p class="text-italic"> Nama Produk : {{$data->name}}</p>
+                            <p class="text-italic"> Kuantiti : {{$data->qty}}</p>
+                            <span class="font-bold">Harga : Rp. {{$data->price}}</span>
                         </div>
                     </div>
 
@@ -108,7 +108,7 @@
                 @endforeach
                 <hr class="mt-3 border-gray-300" />
                 <div class="grandtotal flex flex-row justify-between mt-5">
-                    <label>Total Belanja</label>
+                    <label>Jumlah Belanja</label>
 
                     <span class="text-2xl font-bold">Rp. {{$total}}</span>
                 </div>

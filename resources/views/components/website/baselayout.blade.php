@@ -121,7 +121,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="/" class="nav-item nav-link active">Beranda</a>
                             <a href="/about" class="nav-item nav-link">Tentang</a>
                             <a href="/cara-berbelanja" class="nav-item nav-link">Cara Berbelanja</a>
 
@@ -161,12 +161,12 @@
                                             <a href="route('logout')"
                                                 onclick="event.preventDefault();
                                                                 this.closest('form').submit();">
-                                                {{ __('Log Out') }}
+                                                {{ __('Keluar') }}
                                             </a>
                                         </form>
                                     @else
                                         <a href="{{ route('login') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                            class="text-sm text-gray-700 dark:text-gray-500 underline">Masuk</a>
                                         {{-- @if (Route::has('register'))
                                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                   @endif --}}
@@ -183,10 +183,10 @@
                                 alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                                        Order</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik Disini
+                                        </h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Berkualitas</h3>
+                                    <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
                             </div>
                         </div>
@@ -195,10 +195,10 @@
                                 alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                                        Order</h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik Disini
+                                        </h4>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Harga Lebih Murah</h3>
+                                    <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
                             </div>
                         </div>
@@ -503,11 +503,11 @@
                             class="text-primary font-weight-bold border border-white px-3 mr-1">Tenun</span>Songket
                     </h1>
                 </a>
-                <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum
-                    dolore amet erat.</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                <p>Penual kain tenun songket termurah dan paling berkualitas di Bali. Banyak pilihan motif dengan harga yang variatif.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Banjar Dinas Klungah, Desa Wisma Kerta,
+                    Kecamatan Sidemen, Kabupaten Karangasem, Bali 80864</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@tenun-songket.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+62 878 613 938 76</p>
             </div>
             {{-- <div class="col-lg-8 col-md-12">
                 <div class="row">

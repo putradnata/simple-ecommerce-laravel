@@ -20,13 +20,12 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between bg-light border">
-                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                    Detail</a>
+                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Lihat Detil</a>
                 <form action={{ route('buyer.addToCart', $data->id) }} method="POST">
                     @csrf
                     <input type="hidden" value="1" name="qty">
                     <a class="btn btn-sm text-dark p-0" onclick="event.preventDefault();
-                    this.closest('form').submit();"><i class="fas fa-cart-plus text-primary mr-1"></i>Add to Cart
+                    this.closest('form').submit();"><i class="fas fa-cart-plus text-primary mr-1"></i>Keranjang
                     </a>
                 </form>
             </div>

@@ -50,7 +50,7 @@
                 <th>No.</th>
                 <th>Kode Transaksi</th>
                 <th>Pembayaran</th>
-                <th>Total Pembayaran</th>
+                <th>Jumlah Pembayaran</th>
                 <th>Bukti Pembayaran</th>
                 <th>Status</th>
                 <th class="text-center">Aksi</th>
@@ -65,15 +65,15 @@
                     <td>Rp. {{$data->total}}</td>
                     <td><button type="submit" class="btn btn-sm btn-info">
                         <i class="fas fa-image"></i>
-                        View Bukti
+                        Lihat Bukti
                     </button></td>
                     <td>
                         @if ($data->status == "Checking Payment")
                         <span class="badge badge-info">Checking Payment</span>
                         @elseif ($data->status == "Payment Failed")
-                        <span class="badge badge-danger">Payment Declined</span>
+                        <span class="badge badge-danger">Pembayaran Ditolak</span>
                         @else
-                        <span class="badge badge-success">Payment Approved</span>
+                        <span class="badge badge-success">Pembayaran Diterima</span>
                         @endif
                     </td>
                     <td>
@@ -83,7 +83,7 @@
                             <input type="hidden" value="a" name="status">
                             <button type="submit" class="btn btn-sm btn-success">
                                 <i class="fas fa-check"></i>
-                                Approved
+                                Terima
                             </button>
                         </form>
                         <br>
@@ -92,14 +92,14 @@
                             <input type="hidden" value="d" name="status">
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fas fa-close"></i>
-                                Decline
+                                Tolak
                             </button>
                         </form>
                         <br>
                         @endif
                         <button type="submit" class="btn btn-sm btn-info">
                             <i class="fas fa-list"></i>
-                            Detail
+                            Detil
                         </button>
                     </td>
                 </tr>

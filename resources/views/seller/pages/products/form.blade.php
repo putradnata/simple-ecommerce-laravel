@@ -48,11 +48,11 @@
         @csrf
 
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Nama Product</label>
+            <label for="name" class="col-sm-2 col-form-label">Nama Produk</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $product->name) }}"
-                    placeholder="Nama produk" name="name" autocomplete="name"/>
+                    placeholder="Masukkan nama produk" name="name" autocomplete="name"/>
 
                 {{-- error message for input type above --}}
                 @error('name')
@@ -64,11 +64,11 @@
         </div>
 
         <div class="form-group row">
-            <label for="description" class="col-sm-2 col-form-label">Deskripsi Product</label>
+            <label for="description" class="col-sm-2 col-form-label">Deskripsi Produk</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <textarea class="form-control @error('description') is-invalid @enderror" id="description"
-                    placeholder="Deskripsi produk" name="description" autocomplete="description">{{ old('description', $product->description) }}</textarea>
+                    placeholder="Masukkan deskripsi produk" name="description" autocomplete="description">{{ old('description', $product->description) }}</textarea>
 
                 {{-- error message for input type above --}}
                 @error('description')
@@ -80,7 +80,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="image" class="col-sm-2 col-form-label">Gambar Product</label>
+            <label for="image" class="col-sm-2 col-form-label">Gambar Produk</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image[]" multiple/>
@@ -99,7 +99,7 @@
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="number" min="1" class="form-control @error('qty') is-invalid @enderror" id="qty" value="{{ old('qty', $product->qty) }}"
-                    placeholder="Stok produk" name="qty" autocomplete="qty"/>
+                    placeholder="Masukkan jumlah stok produk" name="qty" autocomplete="qty"/>
 
                 {{-- error message for input type above --}}
                 @error('qty')
@@ -115,7 +115,7 @@
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="number" min="1" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ old('price', $product->price) }}"
-                    placeholder="Harga produk" name="price" autocomplete="price"/>
+                    placeholder="Masukkan harga produk" name="price" autocomplete="price"/>
 
                 {{-- error message for input type above --}}
                 @error('price')

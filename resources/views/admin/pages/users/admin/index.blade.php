@@ -54,7 +54,7 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Name</th>
+                <th>Nama Admin</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -68,7 +68,7 @@
                         @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
-                                Delete
+                                Hapus
                             </button>
                     </form></td>
                 </tr>

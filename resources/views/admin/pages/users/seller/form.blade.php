@@ -48,11 +48,11 @@
         @csrf
 
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Nama</label>
+            <label for="name" class="col-sm-2 col-form-label">Nama Penjual</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                    value="{{ old('name', $user->name) }}" placeholder="Nama seller" name="name" autocomplete="name" />
+                    value="{{ old('name', $user->name) }}" placeholder="Masukkan nama penjual" name="name" autocomplete="name" />
 
                 {{-- error message for input type above --}}
                 @error('name')
@@ -64,11 +64,11 @@
         </div>
 
         <div class="form-group row">
-            <label for="email" class="col-sm-2 col-form-label">E-Mail Address</label>
+            <label for="email" class="col-sm-2 col-form-label">Alamat E-Mail</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                    value="{{ old('email', $user->email) }}" placeholder="E-Mail seller" name="email"
+                    value="{{ old('email', $user->email) }}" placeholder="Masukkan e-mail penjual" name="email"
                     autocomplete="email" />
 
                 {{-- error message for input type above --}}
@@ -81,11 +81,11 @@
         </div>
 
         <div class="form-group row">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <label for="password" class="col-sm-2 col-form-label">Kata Sandi</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                    placeholder="Password seller" name="password" autocomplete="password" />
+                    placeholder="Masukkan kata sandi penjual" name="password" autocomplete="password" />
 
                 {{-- error message for input type above --}}
                 @error('password')
@@ -97,11 +97,11 @@
         </div>
 
         <div class="form-group row">
-            <label for="password_confirmation" class="col-sm-2 col-form-label">Password Confirmation</label>
+            <label for="password_confirmation" class="col-sm-2 col-form-label">Konfirmasi Kata Sandi</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                    id="password_confirmation" placeholder="Password confirmation seller" name="password_confirmation"
+                    id="password_confirmation" placeholder="Masukkan kata sandi penjual sekali lagi" name="password_confirmation"
                     autocomplete="password_confirmation" />
 
                 {{-- error message for input type above --}}

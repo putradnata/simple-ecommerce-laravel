@@ -36,7 +36,7 @@
 
     @section('cardAction')
         <a class="btn btn-primary" href="/admin/user/create?role=S">
-            <i class="fa fa-plus"></i> Tambah Data Seller
+            <i class="fa fa-plus"></i> Tambah Data Penjual
         </a>
     @endsection
 
@@ -54,7 +54,7 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Name</th>
+                <th>Nama Penjual</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -68,7 +68,7 @@
                         @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fas fa-trash"></i>
-                                Delete
+                                Hapus
                             </button>
                     </form></td>
                 </tr>

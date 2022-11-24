@@ -97,7 +97,7 @@
                                     <li class="nav-item">
                                         <input type="hidden" value="S" name="role">
                                         <a class="nav-link" onclick="event.preventDefault();
-                                        this.closest('form').submit();">Seller</a>
+                                        this.closest('form').submit();">Penjual</a>
                                     </li>
                                 </form>
                             </li>
@@ -110,7 +110,7 @@
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 <span class="btn btn-danger w-100">
-                                    <i class="nav-icon fas fa-sign-out"></i> {{ __('Log Out') }}
+                                    <i class="nav-icon fas fa-sign-out"></i> {{ __('Keluar') }}
                                 </span>
                             </a>
                         </form>
@@ -160,7 +160,7 @@
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
                                 <span class="btn btn-danger w-100">
-                                    <i class="nav-icon fas fa-sign-out"></i> {{ __('Log Out') }}
+                                    <i class="nav-icon fas fa-sign-out"></i> {{ __('Keluar') }}
                                 </span>
                             </a>
                         </form>
