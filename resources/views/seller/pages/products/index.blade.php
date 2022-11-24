@@ -63,23 +63,26 @@
         <tbody>
             @foreach ($data as $b => $data)
                 <tr>
-                    <td>{{++$b}}</td>
-                    <td>{{$data->name}}</td>
-                    <td>{{$data->qty}}</td>
-                    <td>Rp. {{$data->price}}</td>
+                    <td>{{ ++$b }}</td>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ $data->qty }}</td>
+                    <td>Rp. {{ $data->price }}</td>
                     <td>
-                        <form action={{ route('product.destroy', $data->id) }} method="POST">
-                        @csrf
-                        @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                                Hapus
+                        <div style="display:flex; flex-direction:row; gap:10px;">
+
+                            <form action={{ route('product.destroy', $data->id) }} method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Hapus
+                                </button>
+                            </form>
+                            <button type="submit" class="btn btn-sm btn-info">
+                                <i class="fas fa-list-alt"></i>
+                                Lihat Detil
                             </button>
-                        </form>
-                        <button type="submit" class="btn btn-sm btn-info">
-                            <i class="fas fa-list-alt"></i>
-                            Lihat Detil
-                        </button>
+                        </div>
                     </td>
                 </tr>
             @endforeach

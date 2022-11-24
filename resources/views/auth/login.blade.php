@@ -276,17 +276,14 @@
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
-                <img src="{{ asset('assets/shop/images/carousel-1.jpg') }}" />
-                {{-- <img src="https://i.ibb.co/LJzrb9J/ales-nesetril-Im7l-Zjxe-Lhg-unsplash.jpg" alt=""> --}}
+                <img src="{{ asset('assets/shop/images/login.jpg') }}" />
                 <div class="text">
                     <span class="text-1">Selamat Datang <br /> </span>
                     {{-- <span class="text-2">Let's get connected</span> --}}
                 </div>
             </div>
             <div class="back">
-                <img src="{{ asset('assets/shop/images/carousel-1.jpg') }}" />
-                {{-- <img class="backImg" src="https://i.ibb.co/LJzrb9J/ales-nesetril-Im7l-Zjxe-Lhg-unsplash.jpg"
-                    alt=""> --}}
+                <img src="{{ asset('assets/shop/images/login.jpg') }}" />
                 <div class="text">
                     <span class="text-1">Complete miles of journey <br> with one step</span>
                     <span class="text-2">Let's get started</span>
@@ -344,7 +341,8 @@
                             <div class="button input-box">
                                 <input type="submit" value="Masuk">
                             </div>
-                            <div class="text sign-up-text">Belum memiliki akun? <label for="flip">Daftar Sekarang</label>
+                            <div class="text sign-up-text">Belum memiliki akun? <label for="flip">Daftar
+                                    Sekarang</label>
                             </div>
                         </div>
                     </form>
@@ -393,7 +391,8 @@
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
                                 <input id="password_confirmation" class="block mt-1 w-full" type="password"
-                                    name="password_confirmation" required placeholder="Masukkan kata sandi anda sekali lagi" />
+                                    name="password_confirmation" required
+                                    placeholder="Masukkan kata sandi anda sekali lagi" />
                             </div>
                             <div class="button input-box">
                                 <input type="submit" value="Submit">

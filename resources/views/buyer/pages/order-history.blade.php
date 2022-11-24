@@ -50,116 +50,136 @@
 
     <div class="container product-container">
         <div class="row product">
-            <div class="col-md-13 mb-4">
+            <div class="mb-4"
+                style="display:flex; flex-direction:row; gap:10px; width:100%; justify-content: space-between;">
                 <form method="GET" action="{{ route('buyer.order-history') }}">
                     <input type="hidden" value="Waiting Payment" name="status">
-                    @if ($status == "Waiting Payment")
-                        <a class="btn btn-secondary active" onclick="event.preventDefault();
-                        this.closest('form').submit();">Menunggu Pembayaran</a>
+                    @if ($status == 'Waiting Payment')
+                        <a class="btn btn-secondary active"
+                            onclick="event.preventDefault();
+                        this.closest('form').submit();">Menunggu
+                            Pembayaran</a>
                     @else
-                        <a class="btn btn-secondary" onclick="event.preventDefault();
-                        this.closest('form').submit();">Menunggu Pembayaran</a>
+                        <a class="btn btn-secondary"
+                            onclick="event.preventDefault();
+                        this.closest('form').submit();">Menunggu
+                            Pembayaran</a>
                     @endif
                 </form>
                 <form method="GET" action="{{ route('buyer.order-history') }}">
                     <input type="hidden" value="Checking Payment" name="status">
-                    @if ($status == "Checking Payment" || $status == "Payment Failed")
-                        <a class="btn btn-secondary active" onclick="event.preventDefault();
-                        this.closest('form').submit();">Validasi Pembayaran</a>
+                    @if ($status == 'Checking Payment' || $status == 'Payment Failed')
+                        <a class="btn btn-secondary active"
+                            onclick="event.preventDefault();
+                        this.closest('form').submit();">Validasi
+                            Pembayaran</a>
                     @else
-                        <a class="btn btn-secondary" onclick="event.preventDefault();
-                        this.closest('form').submit();">Validasi Pembayaran</a>
+                        <a class="btn btn-secondary"
+                            onclick="event.preventDefault();
+                        this.closest('form').submit();">Validasi
+                            Pembayaran</a>
                     @endif
                 </form>
                 <form method="GET" action="{{ route('buyer.order-history') }}">
                     <input type="hidden" value="On Process" name="status">
-                    @if ($status == "On Process")
-                        <a class="btn btn-secondary active" onclick="event.preventDefault();
+                    @if ($status == 'On Process')
+                        <a class="btn btn-secondary active"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Pengemasan</a>
                     @else
-                        <a class="btn btn-secondary" onclick="event.preventDefault();
+                        <a class="btn btn-secondary"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Pengemasan</a>
                     @endif
                 </form>
                 <form method="GET" action="{{ route('buyer.order-history') }}">
                     <input type="hidden" value="Shipping" name="status">
-                    @if ($status == "Shipping")
-                        <a class="btn btn-secondary active" onclick="event.preventDefault();
+                    @if ($status == 'Shipping')
+                        <a class="btn btn-secondary active"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Pengiriman</a>
                     @else
-                        <a class="btn btn-secondary" onclick="event.preventDefault();
+                        <a class="btn btn-secondary"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Pengiriman</a>
                     @endif
                 </form>
                 <form method="GET" action="{{ route('buyer.order-history') }}">
                     <input type="hidden" value="Received" name="status">
-                    @if ($status == "Received")
-                        <a class="btn btn-secondary active" onclick="event.preventDefault();
+                    @if ($status == 'Received')
+                        <a class="btn btn-secondary active"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Selesai</a>
                     @else
-                        <a class="btn btn-secondary" onclick="event.preventDefault();
+                        <a class="btn btn-secondary"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Selesai</a>
                     @endif
                 </form>
                 <form method="GET" action="{{ route('buyer.order-history') }}">
                     <input type="hidden" value="Cancelled" name="status">
-                    @if ($status == "Cancelled")
-                        <a class="btn btn-secondary active" onclick="event.preventDefault();
+                    @if ($status == 'Cancelled')
+                        <a class="btn btn-secondary active"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Dibatalkan</a>
                     @else
-                        <a class="btn btn-secondary" onclick="event.preventDefault();
+                        <a class="btn btn-secondary"
+                            onclick="event.preventDefault();
                         this.closest('form').submit();">Dibatalkan</a>
                     @endif
                 </form>
             </div>
             <div class="col-md-12">
                 <table class="table table-striped">
-                    @if($status == "Waiting Payment" || $status == "Checking Payment" || $status == "Payment Failed")
-                    <tr>
-                        <th>No.</th>
-                        <th>Kode Transaksi</th>
-                        <th>Pembayaran</th>
-                        <th>Jumlah Pembayaran</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                    @foreach ($data as $d => $data)
-                    <tr>
-                        <td>{{ ++$d }}.</td>
-                        <td>{{ $data->invoice_code }}</td>
-                        <td>{{ $data->payment }}</td>
-                        <td>Rp. {{ $data->total }}</td>
-                        <td>{{ $data->status }}</td>
-                        <td>
-                        @if ($data->status == 'Waiting Payment')
-                        <a href= "{{ route('buyer.payment-view', $data->id) }}"><button type="submit" class="btn btn-sm btn-info">
-                            <i class="fa fa-image"></i>
-                            Unggah Bukti Pembayaran
-                        </button></a>
-                        @endif
-                        <a href="#" class="btn btn-success">
-                            <i class="fa fa-list"></i>
-                        </a>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @if ($status == 'Waiting Payment' || $status == 'Checking Payment' || $status == 'Payment Failed')
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode Transaksi</th>
+                            <th>Pembayaran</th>
+                            <th>Jumlah Pembayaran</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                        @foreach ($data as $d => $data)
+                            <tr>
+                                <td>{{ ++$d }}.</td>
+                                <td>{{ $data->invoice_code }}</td>
+                                <td>{{ $data->payment }}</td>
+                                <td>Rp. {{ $data->total }}</td>
+                                <td>{{ $data->status }}</td>
+                                <td>
+                                    <div style="display: flex; flex-direction:row; gap:10px">
+                                        @if ($data->status == 'Waiting Payment')
+                                            <a href="{{ route('buyer.payment-view', $data->id) }}"><button type="submit"
+                                                    class="btn btn-sm btn-info">
+                                                    <i class="fa fa-image"></i>
+                                                    Unggah Bukti Pembayaran
+                                                </button></a>
+                                        @endif
+                                        <a href="#" class="btn btn-success">
+                                            <i class="fa fa-list"></i> Detail
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     @else
-                    <tr>
-                        <th>No.</th>
-                        <th>Kode Transaksi</th>
-                        <th>Pembayaran</th>
-                        <th>Jumlah Pembayaran</th>
-                        <th>Status</th>
-                    </tr>
-                    @foreach ($data as $d => $data)
-                    <tr>
-                        <td>{{ ++$d }}.</td>
-                        <td>{{ $data->invoice_code }}</td>
-                        <td>{{ $data->payment }}</td>
-                        <td>Rp. {{ $data->total }}</td>
-                        <td>{{ $data->status }}</td>
-                    </tr>
-                    @endforeach
+                        <tr>
+                            <th>No.</th>
+                            <th>Kode Transaksi</th>
+                            <th>Pembayaran</th>
+                            <th>Jumlah Pembayaran</th>
+                            <th>Status</th>
+                        </tr>
+                        @foreach ($data as $d => $data)
+                            <tr>
+                                <td>{{ ++$d }}.</td>
+                                <td>{{ $data->invoice_code }}</td>
+                                <td>{{ $data->payment }}</td>
+                                <td>Rp. {{ $data->total }}</td>
+                                <td>{{ $data->status }}</td>
+                            </tr>
+                        @endforeach
                     @endif
                 </table>
             </div>

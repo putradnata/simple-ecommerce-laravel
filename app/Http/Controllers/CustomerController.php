@@ -193,4 +193,13 @@ class CustomerController extends Controller
         return redirect("http://simple-ecommerce-laravel.test/buyer/order-history?status=Checking%20Payment");
     }
 
+    public function showProductDetail($id){
+
+        $product = Product::find($id);
+
+        $products = Product::where('status', 'Active')->get();
+
+        return view('buyer/pages.singleproduct', ['data'=> $product, 'datas' => $products]);
+    }
+
 }

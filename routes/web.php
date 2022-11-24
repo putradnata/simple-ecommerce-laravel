@@ -39,21 +39,33 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 // seller route
 Route::group(['middleware' => ['auth', 'seller', 'verified'], 'prefix' => 'seller'], function () {
     Route::get('/', [WebsiteController::class, 'SellerIndex'])->name('seller.dashboard');
+
     Route::resource('/product', ProductController::class);
+
     Route::get('/order', [OrderController::class, 'indexOrder'])->name('order.index-order');
 });
 
 // buyer
 Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'], function () {
     Route::get('/', [WebsiteController::class, 'BuyerIndex'])->name('buyer.dashboard');
+
     Route::post('/add-to-cart/{id}', [CustomerController::class, 'addToCart'])->name('buyer.addToCart');
+
     Route::get('/show-cart', [CustomerController::class, 'showCart'])->name('buyer.showCart');
+
     Route::get('/payment', [CustomerController::class, 'order'])->name('buyer.payment');
+
     Route::post('/checkout', [CustomerController::class, 'checkout'])->name('buyer.checkout');
+
     Route::get('/order-history', [CustomerController::class, 'orderHistory'])->name('buyer.order-history');
+
     Route::get('/payment-order/{id}', [CustomerController::class, 'paymentView'])->name('buyer.payment-view');
+
     Route::post('/payment-upload/{id}', [CustomerController::class, 'paymentUpload'])->name('buyer.payment-upload');
+
 });
+
+Route::get('product-detail/{id}', [CustomerController::class, 'showProductDetail'])->name('buyer.show-product-detail');
 
 Route::get('/test', function () {
     return view('buyer/pages.upload-payment');
