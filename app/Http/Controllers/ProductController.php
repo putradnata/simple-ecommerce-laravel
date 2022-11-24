@@ -51,7 +51,7 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required'],
-            'image' => ['required'],
+            'image' => ['required','mimes:png,jpg'],
             'image.*' => ['image','mimes:png,jpg'],
             'qty' => ['required', 'integer', 'min:1'],
             'price' => ['required', 'integer', 'min:1'],
@@ -62,6 +62,7 @@ class ProductController extends Controller
             'name.max' => 'Kolom nama produk maksimal 255 karakter!',
             'description.required' => 'Kolom deskripsi produk masih kosong!',
             'image.required' => 'Kolom image masih kosong!',
+            'image.mimes' => 'Format file harus JPG/PNG!',
             'image.*.required' => 'Kolom image masih kosong!',
             'image.*.mimes' => 'Format file harus JPG/PNG!',
             'qty.required' => 'Kolom qty masih kosong!',
