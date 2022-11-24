@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 Route::group(['middleware' => ['auth', 'seller', 'verified'], 'prefix' => 'seller'], function () {
     Route::get('/', [WebsiteController::class, 'SellerIndex'])->name('seller.dashboard');
     Route::resource('/product', ProductController::class);
+    Route::get('/order', [OrderController::class, 'indexOrder'])->name('order.index-order');
 });
 
 // buyer

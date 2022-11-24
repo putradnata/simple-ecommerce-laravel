@@ -77,7 +77,7 @@
                             </button>
                         </form>
                         <button type="submit" class="btn btn-sm btn-info">
-                            <i class="fas fa-image"></i>
+                            <i class="fas fa-list-alt"></i>
                             Lihat Detil
                         </button>
                     </td>

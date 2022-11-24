@@ -141,15 +141,27 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Pesanan Masuk</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Pesanan Dikirim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Informasi Pesanan</a>
-                            </li>
+                            <form method="GET" action="{{ route('order.index-order') }}">
+                                <li class="nav-item">
+                                    <input type="hidden" value="On Process" name="status">
+                                    <a class="nav-link" onclick="event.preventDefault();
+                                    this.closest('form').submit();">Pesanan Masuk</a>
+                                </li>
+                            </form>
+                            <form method="GET" action="{{ route('order.index-order') }}">
+                                <li class="nav-item">
+                                    <input type="hidden" value="Shipping" name="status">
+                                    <a class="nav-link" onclick="event.preventDefault();
+                                    this.closest('form').submit();">Pesanan Dikirim</a>
+                                </li>
+                            </form>
+                            <form method="GET" action="{{ route('order.index-order') }}">
+                                <li class="nav-item">
+                                    <input type="hidden" value="All" name="status">
+                                    <a class="nav-link" onclick="event.preventDefault();
+                                    this.closest('form').submit();">Informasi Pesanan</a>
+                                </li>
+                            </form>
                         </ul>
                     </li>
 
