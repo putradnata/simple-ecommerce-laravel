@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,12 +20,12 @@ class UserController extends Controller
     {
         $user = User::where('role', $request->role)->get();
 
-        if($request->role == 'A'){
-            return view('admin/pages/users/admin.index',[
+        if ($request->role == 'A') {
+            return view('admin/pages/users/admin.index', [
                 'data' => $user,
             ]);
-        }else if ($request->role == 'S'){
-            return view('admin/pages/users/seller.index',[
+        } else if ($request->role == 'S') {
+            return view('admin/pages/users/seller.index', [
                 'data' => $user,
             ]);
         }
@@ -41,16 +42,15 @@ class UserController extends Controller
 
         $user = (object) $new_user->getDefaultValues();
 
-        if($request->role == 'A'){
-            return view('admin/pages/users/admin.form',[
+        if ($request->role == 'A') {
+            return view('admin/pages/users/admin.form', [
                 'user' => $user,
             ]);
-        }else if($request->role == 'S'){
-            return view('admin/pages/users/seller.form',[
+        } else if ($request->role == 'S') {
+            return view('admin/pages/users/seller.form', [
                 'user' => $user,
             ]);
         }
-
     }
 
     /**
@@ -65,7 +65,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ],[
+        ], [
             'name.required' => 'Kolom nama masih kosong!',
             'name.string' => 'Kolom nama harus bertipe huruf/angka!',
             'name.max' => 'Kolom nama maksimal 255 karakter!',
@@ -85,14 +85,14 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if($request->role <> 'A'){
+        if ($request->role <> 'A') {
             event(new Registered($user));
         }
 
-        if($request->role == 'A'){
-            return redirect('admin/user?role=A')->with('success','Data Admin Berhasil Ditambahkan!');
-        }else if ($request->role == 'S'){
-            return redirect('admin/user?role=S')->with('success','Data Penjual Berhasil Ditambahkan!');
+        if ($request->role == 'A') {
+            return redirect('admin/user?role=A')->with('success', 'Data Admin Berhasil Ditambahkan!');
+        } else if ($request->role == 'S') {
+            return redirect('admin/user?role=S')->with('success', 'Data Penjual Berhasil Ditambahkan!');
         }
     }
 
@@ -113,9 +113,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $data = User::find($id);
+
+        if ($request->role == 'A') {
+            return view('admin/pages/users/admin.form', ['user' => $data, 'id' => $id]);
+        } else {
+            return view('admin/pages/users/seller.form', ['user' => $data, 'id' => $id]);
+        }
     }
 
     /**
@@ -127,7 +133,36 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['confirmed'],
+        ], [
+            'name.required' => 'Kolom nama masih kosong!',
+            'name.string' => 'Kolom nama harus bertipe huruf/angka!',
+            'name.max' => 'Kolom nama maksimal 255 karakter!',
+            'email.required' => 'Kolom e-mail masih kosong!',
+            'email.string' => 'Kolom e-mail harus bertipe huruf/angka!',
+            'email.email' => 'Kolom e-mail harus berformat e-mail!',
+            'email.max' => 'Kolom e-mail maksimal 255 karakter!',
+            'email.unique' => 'E-mail sudah digunakan!',
+            'password.confirmation' => 'Password tidak sama!',
+        ]);
+
+        if ($data['password'] === null) {
+            unset($data['password']);
+        }
+
+        $user = User::where('id', $id)->update($data);
+
+
+        if ($request->role == 'A') {
+            return redirect('admin/user?role=A')->with('success', 'Data Admin Berhasil Diperbaharui!');
+        } else if (Auth::user()->role === 'S') {
+            return redirect('/seller');
+        } else if ($request->role == 'S') {
+            return redirect('admin/user?role=S')->with('success', 'Data Penjual Berhasil Diperbaharui!');
+        }
     }
 
     /**
@@ -138,13 +173,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $role = User::where('id',$id)->value('role');
-        $user = User::where('id',$id)->delete();
+        $role = User::where('id', $id)->value('role');
+        $user = User::where('id', $id)->delete();
 
-        if($role == 'A'){
-            return redirect('admin/user?role=A')->with('success','Data Admin Berhasil Dihapus!');
-        }else if ($role == 'S'){
-            return redirect('admin/user?role=S')->with('success','Data Penjual Berhasil Dihapus!');
+        if ($role == 'A') {
+            return redirect('admin/user?role=A')->with('success', 'Data Admin Berhasil Dihapus!');
+        } else if ($role == 'S') {
+            return redirect('admin/user?role=S')->with('success', 'Data Penjual Berhasil Dihapus!');
         }
     }
 }

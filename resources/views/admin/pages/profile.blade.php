@@ -29,18 +29,27 @@
                     <img class="profile-user-img img-fluid img-circle" src="https://i.ibb.co/LQbqXcG/53571-user.png"
                         alt="User profile picture">
                 </div>
-                <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
-                @if(Auth::user()->role = "A")
+                <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
+                @if (Auth::user()->role === 'A')
                     <p class="text-muted text-center">Admin</p>
                 @else
                     <p class="text-muted text-center">Penjual</p>
                 @endif
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>Surel</b> <a class="float-right">{{Auth::user()->email}}</a>
+                        <b>Surel</b> <a class="float-right">{{ Auth::user()->email }}</a>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-primary btn-block"><b>Edit Profil</b></a>
+
+                @if (Auth::user()->role === 'A')
+                    <a href="{{ route('user.edit', [Auth::user()->id, 'role=A']) }}"
+                        class="btn btn-primary btn-block"><b>Edit
+                            Profil</b></a>
+                @else
+                    <a href="{{ route('seller.edit', [Auth::user()->id, 'role=S']) }}"
+                        class="btn btn-primary btn-block"><b>Edit
+                            Profil</b></a>
+                @endif
             </div>
         </div>
     </div>

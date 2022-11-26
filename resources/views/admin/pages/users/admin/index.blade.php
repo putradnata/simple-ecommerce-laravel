@@ -62,15 +62,23 @@
             @foreach ($data->where('id', '<>', Auth::user()->id) as $b => $data)
                 <tr>
                     <td></td>
-                    <td>{{$data->name}}</td>
-                    <td><form action={{ route('user.destroy', $data->id) }} method="POST">
-                        @csrf
-                        @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i>
-                                Hapus
-                            </button>
-                    </form></td>
+                    <td>{{ $data->name }}</td>
+                    <td>
+                        <div style="display:flex; gap:10px;">
+                            <form action={{ route('user.destroy', $data->id) }} method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Hapus
+                                </button>
+                            </form>
+
+                            <a href="{{ route('user.edit', [$data->id, 'role=A']) }}" class="btn btn-info"><i
+                                    class="fas fa-pencil"></i>
+                                Update</a>
+                        </div>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

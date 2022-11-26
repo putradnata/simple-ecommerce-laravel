@@ -36,6 +36,16 @@ class WebsiteController extends Controller
         return view('admin/pages.index', ['product' => $product, 'seller' => $seller, 'buyer' => $buyer, 'order' => $order]);
     }
 
+    public function AdminProfile()
+    {
+        return view('admin/pages.profile');
+    }
+
+    public function SellerProfile()
+    {
+        return view('admin/pages.profile');
+    }
+
     public function SellerIndex()
     {
         $product = Product::where('user_id', Auth::user()->id)->count();

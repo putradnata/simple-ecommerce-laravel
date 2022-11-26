@@ -41,8 +41,13 @@
         @if (!isset($id))
             <form method="post" action="{{ route('user.store') }}">
             @else
-                <form method="post" action="{{ route('user.update', $id) }}">
-                    @method('PUT')
+                @if (Auth::user()->role == 'A')
+                    <form method="post" action="{{ route('user.update', $id) }}">
+                        @method('PUT')
+                    @else
+                        <form method="post" action="{{ route('seller.update', $id) }}">
+                            @method('PUT')
+                @endif
         @endif
 
         @csrf
@@ -102,8 +107,8 @@
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                    id="password_confirmation" placeholder="Masukkan kata sandi admin sekali lagi" name="password_confirmation"
-                    autocomplete="password_confirmation" />
+                    id="password_confirmation" placeholder="Masukkan kata sandi admin sekali lagi"
+                    name="password_confirmation" autocomplete="password_confirmation" />
 
                 {{-- error message for input type above --}}
                 @error('password_confirmation')

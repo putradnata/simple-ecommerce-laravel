@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::post('/payment-update/{id}', [OrderController::class, 'paymentUpdate'])->name('order.payment-update');
 
     Route::get('/order-detail/{id}', [OrderController::class, 'createShipping'])->name('admin-order.detail');
+
+    Route::get('/profile', [WebsiteController::class, 'AdminProfile'])->name('admin.profile');
 });
 
 // seller route
@@ -55,6 +57,12 @@ Route::group(['middleware' => ['auth', 'seller', 'verified'], 'prefix' => 'selle
     Route::get('/upload-shipping/{id}', [OrderController::class, 'createShipping'])->name('order.create-shipping');
 
     Route::post('/upload-shipping/{id}', [OrderController::class, 'storeShipping'])->name('order.store-shipping');
+
+    Route::get('/profile', [WebsiteController::class, 'SellerProfile'])->name('seller.profile');
+
+    Route::get('/profile-edit/{id}', [UserController::class, 'edit'])->name('seller.edit');
+
+    Route::put('/profile-edit/{id}', [UserController::class, 'update'])->name('seller.update');
 });
 
 // buyer
@@ -77,16 +85,15 @@ Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'
 
     Route::get('/order-detail/{id}', [CustomerController::class, 'OrderDetail'])->name('buyer.order-detail');
 
-    Route::post('/order-history',[CustomerController::class, 'receiveProduct'])->name('buyer.receive-product');
+    Route::post('/order-history', [CustomerController::class, 'receiveProduct'])->name('buyer.receive-product');
 
-    Route::post('/order-history/{id}',[CustomerController::class, 'cancelOrder'])->name('buyer.cancel-product');
-
+    Route::post('/order-history/{id}', [CustomerController::class, 'cancelOrder'])->name('buyer.cancel-product');
 });
 
 Route::get('product-detail/{id}', [CustomerController::class, 'showProductDetail'])->name('buyer.show-product-detail');
 
-Route::get('/test', function () {
-    return view('admin/pages.profile');
-});
+// Route::get('/test', function () {
+//     return view('admin/pages.profile');
+// });
 
 require __DIR__ . '/auth.php';

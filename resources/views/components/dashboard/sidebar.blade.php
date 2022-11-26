@@ -17,7 +17,11 @@
                 <img src="https://i.ibb.co/LQbqXcG/53571-user.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                @if (Auth::user()->role === 'A')
+                    <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::user()->name }}</a>
+                @elseif (Auth::user()->role === 'S')
+                    <a href="{{ route('seller.profile') }}" class="d-block">{{ Auth::user()->name }}</a>
+                @endif
             </div>
         </div>
 
