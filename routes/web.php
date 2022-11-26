@@ -86,7 +86,7 @@ Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'
 Route::get('product-detail/{id}', [CustomerController::class, 'showProductDetail'])->name('buyer.show-product-detail');
 
 Route::get('/test', function () {
-    return view('buyer/pages.upload-payment');
+    return view('admin/pages.profile');
 });
 
 require __DIR__ . '/auth.php';

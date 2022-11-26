@@ -80,13 +80,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            {{-- <div class="col-md-12">
                 <div class="card mb-4">
                     <figure class="highcharts-figure">
                         <div id="container"></div>
                     </figure>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
