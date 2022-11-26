@@ -150,12 +150,36 @@ class CustomerController extends Controller
                         ->distinct()
                         ->get();
         }else{
-            $data = Order::join('detail_orders', 'detail_orders.order_id', 'orders.id')
-                        ->where('orders.buyer_id', Auth::user()->id)
-                        ->where('detail_orders.status', $request->status)
-                        ->distinct()
-                        ->get();
+            $data = [];
+
+        $data_seller = Order::join('detail_orders', 'orders.id', 'detail_orders.order_id')->join('users', 'users.id', 'detail_orders.seller_id')
+                    ->where('orders.buyer_id', Auth::user()->id)
+                    ->where('detail_orders.status', $request->status)
+                    ->select('users.name', 'users.id', 'orders.invoice_code')
+                    ->groupBy('users.name', 'users.id', 'orders.invoice_code')
+                    ->get();
+
+        foreach($data_seller as $key => $data_seller){
+
+            $data[$key]['invoice_code'] = $data_seller->invoice_code;
+            $data[$key]['seller_name'] = $data_seller->name;
+
+            $data_cart = Order::join('detail_orders', 'orders.id', 'detail_orders.order_id')->join('users', 'users.id', 'detail_orders.seller_id')
+                    ->where('orders.buyer_id', Auth::user()->id)
+                    ->where('users.id', $data_seller->id)
+                    ->where('detail_orders.status', $request->status)
+                    ->where('orders.invoice_code', $data_seller->invoice_code)
+                    ->select('detail_orders.*')
+                    ->get();
+
+            foreach($data_cart as $key2 => $data_cart){
+                $data[$key]['product'][$key2] = $data_cart;
+            }
         }
+
+        }
+
+        // dd($data);
 
         return view('buyer/pages.order-history', ['data' => $data, 'status' => $request->status]);
     }
@@ -200,6 +224,37 @@ class CustomerController extends Controller
         $products = Product::where('status', 'Active')->get();
 
         return view('buyer/pages.singleproduct', ['data'=> $product, 'datas' => $products]);
+    }
+
+    public function OrderDetail($id)
+    {
+        $data = Order::findOrFail($id);
+        $detail = DetailOrder::where('order_id', $id)->get();
+
+        return view('buyer/pages.order-detail', [
+            'data' => $data,
+            'detail' => $detail,
+        ]);
+    }
+
+    public function receiveProduct(Request $request)
+    {
+
+        $data_status['status'] = "Received";
+
+        $data = DetailOrder::where('seller_id', $request->seller_id)->where('order_id',$request->order_id)->update($data_status);
+
+        return redirect('/buyer');
+    }
+
+    public function cancelOrder($id)
+    {
+
+        $data_status['status'] = "Cancelled";
+
+        $data = DetailOrder::where('order_id',$id)->update($data_status);
+
+        return redirect('/buyer');
     }
 
 }

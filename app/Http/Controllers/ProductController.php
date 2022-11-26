@@ -51,8 +51,8 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required'],
-            'image' => ['required','mimes:png,jpg'],
-            'image.*' => ['image','mimes:png,jpg'],
+            'image' => ['required'],
+            'image.*' => ['image','mimes:jpeg,png,jpg,gif,svg','max:3048'],
             'qty' => ['required', 'integer', 'min:1'],
             'price' => ['required', 'integer', 'min:1'],
             'status' => ['required'],
@@ -62,9 +62,9 @@ class ProductController extends Controller
             'name.max' => 'Kolom nama produk maksimal 255 karakter!',
             'description.required' => 'Kolom deskripsi produk masih kosong!',
             'image.required' => 'Kolom image masih kosong!',
-            'image.mimes' => 'Format file harus JPG/PNG!',
             'image.*.required' => 'Kolom image masih kosong!',
             'image.*.mimes' => 'Format file harus JPG/PNG!',
+            'image.*.max' => 'Ukuran file maksimal 3MB!',
             'qty.required' => 'Kolom qty masih kosong!',
             'qty.integer' => 'Kolom qty harus angka!',
             'qty.min' => 'Kolom qty minimal 1!',
@@ -72,7 +72,7 @@ class ProductController extends Controller
             'price.integer' => 'Kolom harga harus angka!',
             'price.min' => 'Kolom harga minimal 1!',
             'status.required' => 'Kolom status masih kosong!',
-        ]);
+        ]);;
 
         if($request->hasfile('image'))
          {
@@ -102,7 +102,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        // return view();
+        return view('seller/pages/products.detail', ['data' => $product]);
     }
 
     /**
@@ -111,9 +111,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('seller/pages/products.form', ['product' => $product, 'id' => $id]);
     }
 
     /**
@@ -123,9 +125,52 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $data_image_name = [];
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required'],
+            'image' => ['required'],
+            'image.*' => ['image','mimes:jpeg,png,jpg,gif,svg','max:3048'],
+            'qty' => ['required', 'integer', 'min:1'],
+            'price' => ['required', 'integer', 'min:1'],
+            'status' => ['required'],
+        ],[
+            'name.required' => 'Kolom nama produk masih kosong!',
+            'name.string' => 'Kolom nama produk harus bertipe huruf/angka!',
+            'name.max' => 'Kolom nama produk maksimal 255 karakter!',
+            'description.required' => 'Kolom deskripsi produk masih kosong!',
+            'image.required' => 'Kolom image masih kosong!',
+            'image.*.required' => 'Kolom image masih kosong!',
+            'image.*.mimes' => 'Format file harus JPG/PNG!',
+            'image.*.max' => 'Ukuran file maksimal 3MB!',
+            'qty.required' => 'Kolom qty masih kosong!',
+            'qty.integer' => 'Kolom qty harus angka!',
+            'qty.min' => 'Kolom qty minimal 1!',
+            'price.required' => 'Kolom harga masih kosong!',
+            'price.integer' => 'Kolom harga harus angka!',
+            'price.min' => 'Kolom harga minimal 1!',
+            'status.required' => 'Kolom status masih kosong!',
+        ]);
+
+        if($request->hasfile('image'))
+         {
+            foreach($request->file('image') as $image_product)
+            {
+                $new_name_image =  uniqid().'_'.time().'.'.$image_product->extension();
+                $image_product->move(public_path('product_image'), $new_name_image);
+                $data_image_name[] = $new_name_image;
+            }
+         }
+
+        $data['image'] = json_encode($data_image_name);
+        $data['user_id'] = Auth::user()->id;
+
+        $update = Product::where('id',$id)->update($data);
+
+        return redirect('seller/product')->with('success','Data Produk Berhasil Diperbaharui!');
     }
 
     /**

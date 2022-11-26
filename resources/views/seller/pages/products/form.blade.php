@@ -39,10 +39,10 @@
     @section('cardBody')
         {{-- conditional form tag for CREATE and UPDATE --}}
         @if (!isset($id))
-        <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
-        @else
-        <form method="post" action="{{ route('product.update', $id) }}" enctype="multipart/form-data">
-            @method('PUT')
+            <form method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
+            @else
+                <form method="post" action="{{ route('product.update', $id) }}" enctype="multipart/form-data">
+                    @method('PUT')
         @endif
 
         @csrf
@@ -51,8 +51,9 @@
             <label for="name" class="col-sm-2 col-form-label">Nama Produk</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $product->name) }}"
-                    placeholder="Masukkan nama produk" name="name" autocomplete="name"/>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                    value="{{ old('name', $product->name) }}" placeholder="Masukkan nama produk" name="name"
+                    autocomplete="name" />
 
                 {{-- error message for input type above --}}
                 @error('name')
@@ -83,7 +84,8 @@
             <label for="image" class="col-sm-2 col-form-label">Gambar Produk</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image[]" multiple/>
+                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
+                    name="image[]" multiple />
 
                 {{-- error message for input type above --}}
                 @error('image')
@@ -98,8 +100,9 @@
             <label for="qty" class="col-sm-2 col-form-label">Stok</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="number" min="1" class="form-control @error('qty') is-invalid @enderror" id="qty" value="{{ old('qty', $product->qty) }}"
-                    placeholder="Masukkan jumlah stok produk" name="qty" autocomplete="qty"/>
+                <input type="number" min="1" class="form-control @error('qty') is-invalid @enderror" id="qty"
+                    value="{{ old('qty', $product->qty) }}" placeholder="Masukkan jumlah stok produk" name="qty"
+                    autocomplete="qty" />
 
                 {{-- error message for input type above --}}
                 @error('qty')
@@ -114,8 +117,9 @@
             <label for="price" class="col-sm-2 col-form-label">Harga</label>
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
-                <input type="number" min="1" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ old('price', $product->price) }}"
-                    placeholder="Masukkan harga produk" name="price" autocomplete="price"/>
+                <input type="number" min="1" class="form-control @error('price') is-invalid @enderror"
+                    id="price" value="{{ old('price', $product->price) }}" placeholder="Masukkan harga produk"
+                    name="price" autocomplete="price" />
 
                 {{-- error message for input type above --}}
                 @error('price')
@@ -131,14 +135,20 @@
             <div class="col-sm-10">
                 {{-- example: Form with validation, with error message underneath the input, if the data was wrong when submitted, value still exists --}}
                 <select class="form-control @error('status') is-invalid @enderror" id="status" name="status" />
-                    <option value="">--Pilih Satu--</option>
-                    @if(!isset($id))
-                        <option value="Active" {{ old('status') == 'Active' ? "selected" : "" }}>Active</option>
-                        <option value="Deactive" {{ old('status') == 'Deactive' ? "selected" : "" }}>Deactive</option>
-                    @else
-                        <option value="Active" {{ old('status') == ($product->status ? "selected" : $product->status == "" ) ? "selected" : "" }}>Active</option>
-                        <option value="Deactive" {{ old('status') == ($product->status ? "selected" : $product->status == "" ) ? "selected" : "" }}>Deactive</option>
-                    @endif
+                <option value="">--Pilih Satu--</option>
+                @if (!isset($id))
+                    <option value="Active" {{ old('status') == 'Active' ? 'selected' : '' }}>Active</option>
+                    <option value="Deactive" {{ old('status') == 'Deactive' ? 'selected' : '' }}>Deactive</option>
+                @else
+                    <option value="Active"
+                        {{ old('status') == ($product->status ? 'selected' : $product->status == '') ? 'selected' : '' }}
+                        {{ $product->status == 'Active' ? 'selected' : null }}>
+                        Active</option>
+                    <option value="Deactive"
+                        {{ old('status') == ($product->status ? 'selected' : $product->status == '') ? 'selected' : '' }}
+                        {{ $product->status == 'Deactive' ? 'selected' : null }}>
+                        Deactive</option>
+                @endif
                 </select>
                 {{-- error message for input type above --}}
                 @error('status')

@@ -69,14 +69,6 @@
                     </tfoot>
                 </table>
 
-
-                <h2 class="font-bold text-xl pt-10 pb-5">Bukti Pembayaran</h2>
-
-                <form action="{{ route('buyer.payment-upload', $id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <input type="file" name="attachment" />
-                    <button class="py-3 px-5 bg-green-500 text-white rounded-md" type="submit">Unggah</button>
-                </form>
             </div>
 
             <div id="product-detail" class="bg-gray-100 order-1 p-10 md:order-2 md:p-36"
@@ -86,30 +78,3 @@
         </div>
     </div>
 @endsection
-
-{{-- <html>
-
-<body>
-    <label>Informasi Order :</label><br>
-    <label>Pembayaran : {{ $data->payment }}</label><br />
-    <label>Nama Penerima : {{ $data->name }}</label><br>
-    <label>Alamat Pengiriman : {{ $data->address }}</label><br>
-    <label>Ekspedisi : {{ $detail[0]->shipper }}</label><br>
-
-    <label>Daftar Barang :</label><br>
-    @foreach ($detail as $d => $detail)
-        <li>No. {{ ++$d }}. | {{ $detail->product_name }} | {{ $detail->qty }} | Rp. {{ $detail->price }}
-        </li>
-    @endforeach
-
-    <label>Jumlah : Rp. {{ $data->total }}</label><br>
-
-    <form action="{{ route('buyer.payment-upload', $id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <label>Bukti Pembayaran</label>
-        <input type="file" name="attachment" />
-        <button type="submit">Unggah</button>
-    </form>
-</body>
-
-</html> --}}

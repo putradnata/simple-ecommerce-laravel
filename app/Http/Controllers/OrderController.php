@@ -68,12 +68,22 @@ class OrderController extends Controller
         ]);
     }
 
-    public function createShipping(Request $request)
+    public function createShipping($id)
     {
-        return view('layouts.seller.uploadresi', ['invoice' => $id]);
+
+        if(Auth::user()->role === 'S'){
+            $data = Order::join('detail_orders','orders.id','detail_orders.order_id')->where('detail_orders.order_id', $id)->where('detail_orders.seller_id', Auth::user()->id)->get();
+
+            return view('seller/pages/orders/information.upload-shipping',['data' => $data]);
+        }
+
+        $data = Order::join('detail_orders','orders.id','detail_orders.order_id')->where('detail_orders.order_id', $id)->get();
+
+        return view('admin/pages/payment.detail',['data' => $data]);
+
     }
 
-    public function storeShipping(Request $request)
+    public function storeShipping(Request $request, $id)
     {
         $data_status = $request->validate([
             'airwaybill' => 'required',
@@ -81,8 +91,14 @@ class OrderController extends Controller
 
         $data_status['status'] = "Shipping";
 
-        $data = DetailOrder::where('seller_id', Auth::user()->id)->update($data_status);
+        $data = DetailOrder::where('seller_id', Auth::user()->id)->where('order_id',$id)->update($data_status);
 
-        return redirect('seller/order');
+        return redirect('seller/order?status=On+Process');
+    }
+
+    public function showOrder($id){
+        $data = DetailOrder::where('order_id', $id)->where('seller_id', Auth::user()->id)->get();
+
+        return view('seller/pages/orders/information.detail',['detail' => $data]);
     }
 }

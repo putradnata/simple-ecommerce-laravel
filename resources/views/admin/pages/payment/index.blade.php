@@ -99,10 +99,10 @@
                                     </form>
                                     <br>
                                 @endif
-                                <button type="submit" class="btn btn-sm btn-info">
+                                <a href="{{ route('admin-order.detail', $data->id) }}" class="btn btn-sm btn-info">
                                     <i class="fas fa-list"></i>
                                     Detil
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>

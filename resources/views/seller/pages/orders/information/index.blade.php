@@ -1,12 +1,12 @@
 @extends('components/dashboard.baselayout')
 
-@if ($status == "On Process")
-@section('PageAddress', 'Data Pesanan Masuk')
+@if ($status == 'On Process')
+    @section('PageAddress', 'Data Pesanan Masuk')
 @endif
-@if ($status == "Shipping")
-@section('PageAddress', 'Data Pesanan Dikirim')
+@if ($status == 'Shipping')
+    @section('PageAddress', 'Data Pesanan Dikirim')
 @else
-@section('PageAddress', 'Data Informasi Pesanan')
+    @section('PageAddress', 'Data Informasi Pesanan')
 @endif
 
 
@@ -40,14 +40,14 @@
 
 @section('PageContent')
     @component('components/dashboard.card')
-        @if ($status == "On Process")
-        @section('cardTitle', 'Data Pesanan Masuk')
+        @if ($status == 'On Process')
+            @section('cardTitle', 'Data Pesanan Masuk')
         @endif
-        @if ($status == "Shipping")
-        @section('cardTitle', 'Data Pesanan Dikirim')
+        @if ($status == 'Shipping')
+            @section('cardTitle', 'Data Pesanan Dikirim')
         @else
         @section('cardTitle', 'Data Informasi Pesanan')
-        @endif
+    @endif
 
 @section('cardBody')
     @if (Session::has('success'))
@@ -72,37 +72,37 @@
         </thead>
         <tbody>
             @foreach ($data as $d => $data)
-            <tr>
-                <td>{{ ++$d }}.</td>
-                <td>{{ $data->invoice_code }}</td>
-                <td>{{ $data->name }}</td>
-                <td>{{ $data->address }}</td>
-                <td>{{ $data->shipper }}</td>
-                <td>
-                    @if ($data->status == "On Process")
-                    <button type="submit" class="btn btn-sm btn-success">
-                        <i class="fas fa-list-alt"></i>
-                        Upload Resi
-                    </button>
-                    @endif
-                    <button type="submit" class="btn btn-sm btn-info">
-                        <i class="fas fa-list-alt"></i>
-                        Lihat Detil
-                    </button>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ ++$d }}.</td>
+                    <td>{{ $data->invoice_code }}</td>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ $data->address }}</td>
+                    <td>{{ $data->shipper }}</td>
+                    <td>
+                        @if ($data->status == 'On Process')
+                            <a href="{{ route('order.create-shipping', $data->id) }}" class="btn btn-sm btn-success">
+                                <i class="fas fa-list-alt"></i>
+                                Upload Resi
+                            </a>
+                        @endif
+                        <a href="{{ route('order.detail', $data->id) }}" class="btn btn-sm btn-info">
+                            <i class="fas fa-list-alt"></i>
+                            Lihat Detil
+                        </a>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
 @endsection
 
-@if ($status == "On Process")
-@section('cardFooter', 'Data Pesanan Masuk')
+@if ($status == 'On Process')
+    @section('cardFooter', 'Data Pesanan Masuk')
 @endif
-@if ($status == "Shipping")
-@section('cardFooter', 'Data Pesanan Dikirim')
+@if ($status == 'Shipping')
+    @section('cardFooter', 'Data Pesanan Dikirim')
 @else
-@section('cardFooter', 'Data Informasi Pesanan')
+    @section('cardFooter', 'Data Informasi Pesanan')
 @endif
 @endcomponent
 @endsection

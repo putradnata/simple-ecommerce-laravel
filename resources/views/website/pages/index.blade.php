@@ -9,14 +9,16 @@
                     @php
                         $image = json_decode($data->image);
                     @endphp
-                    @for ($i = 0; $i < 1; $i++)
-                        <div
-                            style="background: url({{ url('/product_image/' . $image[0]) }}); height:25vh; background-size:cover; background-position:center;">
-                        </div>
-                    @endfor
+                    @if ($image)
+                        @for ($i = 0; $i < 1; $i++)
+                            <div
+                                style="background: url({{ url('/product_image/' . $image[0]) }}); height:25vh; background-size:cover; background-position:center;">
+                            </div>
+                        @endfor
+                    @endif
                 </div>
                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3"></h6>
+                    <h6 class="text-truncate mb-3">{{ $data->name }}</h6>
                     <div class="d-flex justify-content-center">
                         <h6>Rp. {{ $data->price }}</h6>
                     </div>

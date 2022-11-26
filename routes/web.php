@@ -30,10 +30,16 @@ Route::get('/cara-berbelanja', [WebsiteController::class, 'HowToShop'])->name('p
 // admin route
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::get('/', [WebsiteController::class, 'AdminIndex'])->name('admin.dashboard');
+
     Route::resource('/bank', BankController::class);
+
     Route::resource('/user', UserController::class);
+
     Route::get('/payment', [OrderController::class, 'paymentIndex'])->name('order.payment');
+
     Route::post('/payment-update/{id}', [OrderController::class, 'paymentUpdate'])->name('order.payment-update');
+
+    Route::get('/order-detail/{id}', [OrderController::class, 'createShipping'])->name('admin-order.detail');
 });
 
 // seller route
@@ -43,6 +49,12 @@ Route::group(['middleware' => ['auth', 'seller', 'verified'], 'prefix' => 'selle
     Route::resource('/product', ProductController::class);
 
     Route::get('/order', [OrderController::class, 'indexOrder'])->name('order.index-order');
+
+    Route::get('/order-detail/{id}', [OrderController::class, 'showOrder'])->name('order.detail');
+
+    Route::get('/upload-shipping/{id}', [OrderController::class, 'createShipping'])->name('order.create-shipping');
+
+    Route::post('/upload-shipping/{id}', [OrderController::class, 'storeShipping'])->name('order.store-shipping');
 });
 
 // buyer
@@ -62,6 +74,12 @@ Route::group(['middleware' => ['auth', 'buyer', 'verified'], 'prefix' => 'buyer'
     Route::get('/payment-order/{id}', [CustomerController::class, 'paymentView'])->name('buyer.payment-view');
 
     Route::post('/payment-upload/{id}', [CustomerController::class, 'paymentUpload'])->name('buyer.payment-upload');
+
+    Route::get('/order-detail/{id}', [CustomerController::class, 'OrderDetail'])->name('buyer.order-detail');
+
+    Route::post('/order-history',[CustomerController::class, 'receiveProduct'])->name('buyer.receive-product');
+
+    Route::post('/order-history/{id}',[CustomerController::class, 'cancelOrder'])->name('buyer.cancel-product');
 
 });
 

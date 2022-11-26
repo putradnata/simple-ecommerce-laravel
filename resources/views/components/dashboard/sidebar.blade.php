@@ -28,7 +28,7 @@
 
                 @if (Auth::user()->role === 'A')
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link">
                             <i class="nav-icon fas fa-dashboard"></i>
                             <p>
                                 Dashboard
@@ -51,14 +51,14 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-clipboard"></i>
                             <p>
                                 Laporan
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-truck"></i>
@@ -119,7 +119,7 @@
             </li>
         @elseif (Auth::user()->role === 'S')
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('seller.dashboard') }}" class="nav-link">
                     <i class="nav-icon fas fa-dashboard"></i>
                     <p>
                         Dashboard

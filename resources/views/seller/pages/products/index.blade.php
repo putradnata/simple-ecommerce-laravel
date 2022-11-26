@@ -78,10 +78,13 @@
                                     Hapus
                                 </button>
                             </form>
-                            <button type="submit" class="btn btn-sm btn-info">
+                            <a href="{{ route('product.edit', $data->id) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pencil"></i>
+                                Edit Data</a>
+                            <a href="{{ route('product.show', $data->id) }}" class="btn btn-sm btn-info">
                                 <i class="fas fa-list-alt"></i>
                                 Lihat Detil
-                            </button>
+                            </a>
                         </div>
                     </td>
                 </tr>

@@ -114,7 +114,7 @@
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                                class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                                class="text-primary font-weight-bold border px-3 mr-1">Tenun</span>Songket</h1>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -127,11 +127,13 @@
 
                             @if (Route::has('login'))
                                 @auth
-                                <form method="GET" action="{{ route('buyer.order-history') }}">
-                                    <input type="hidden" value="Waiting Payment" name="status">
-                                    <a class="nav-item nav-link" onclick="event.preventDefault();
-                                    this.closest('form').submit();">Riwayat Pemesanan</a>
-                                </form>
+                                    <form method="GET" action="{{ route('buyer.order-history') }}">
+                                        <input type="hidden" value="Waiting Payment" name="status">
+                                        <a class="nav-item nav-link"
+                                            onclick="event.preventDefault();
+                                    this.closest('form').submit();">Riwayat
+                                            Pemesanan</a>
+                                    </form>
                                 @endauth
                             @endif
                             {{-- <a href="shop.html" class="nav-item nav-link">Shop</a>
@@ -183,8 +185,9 @@
                                 alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik Disini
-                                        </h4>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik
+                                        Disini
+                                    </h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Berkualitas</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
@@ -195,8 +198,9 @@
                                 alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik Disini
-                                        </h4>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik
+                                        Disini
+                                    </h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Harga Lebih Murah</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
@@ -503,8 +507,10 @@
                             class="text-primary font-weight-bold border border-white px-3 mr-1">Tenun</span>Songket
                     </h1>
                 </a>
-                <p>Penjual kain tenun songket termurah dan paling berkualitas di Bali. Banyak pilihan motif dengan harga yang variatif.</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Banjar Dinas Klungah, Desa Wisma Kerta,
+                <p>Penjual kain tenun songket termurah dan paling berkualitas di Bali. Banyak pilihan motif dengan harga
+                    yang variatif.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Banjar Dinas Klungah, Desa
+                    Wisma Kerta,
                     Kecamatan Sidemen, Kabupaten Karangasem, Bali 80864</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@tenun-songket.com</p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+62 878 613 938 76</p>
