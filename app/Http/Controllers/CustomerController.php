@@ -179,7 +179,7 @@ class CustomerController extends Controller
 
         }
 
-        // dd($data);
+        Session::put('url', request()->fullUrl());
 
         return view('buyer/pages.order-history', ['data' => $data, 'status' => $request->status]);
     }
@@ -214,7 +214,12 @@ class CustomerController extends Controller
 
         $data_detail = DetailOrder::where('order_id', $id)->update($data_detail_order);
 
-        return redirect("http://simple-ecommerce-laravel.test/buyer/order-history?status=Checking%20Payment");
+        $url = explode('?',session('url'));
+        $url[1] = 'status='.$data_detail_order['status'];
+
+        Session::put('redirect', implode("?", $url));
+
+        return redirect(session('redirect'));
     }
 
     public function showProductDetail($id){
