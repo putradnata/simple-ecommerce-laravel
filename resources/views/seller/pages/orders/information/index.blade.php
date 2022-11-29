@@ -79,7 +79,7 @@
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->address }}</td>
                     <td>{{ $data->shipper }}</td>
-                    <td><span class="badge badge-info">{{ $data->status }}</span></td>
+                    <td><span class="badge badge-success">{{ $data->status }}</span></td>
                     <td>
                         @if ($data->status == 'On Process')
                             <a href="{{ route('order.create-shipping', $data->id) }}" class="btn btn-sm btn-success">
