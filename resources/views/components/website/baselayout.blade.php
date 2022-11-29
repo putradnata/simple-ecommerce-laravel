@@ -188,7 +188,7 @@
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik
                                         Disini
                                     </h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Berkualitas</h3>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Tenun Songket Berkualitas</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik
                                         Disini
                                     </h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Harga Lebih Murah</h3>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Tenun songket Asli Sidemen</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
                             </div>
@@ -507,7 +507,7 @@
                             class="text-primary font-weight-bold border border-white px-3 mr-1">Tenun</span>Songket
                     </h1>
                 </a>
-                <p>Penjual kain tenun songket termurah dan paling berkualitas di Bali. Banyak pilihan motif dengan harga
+                <p>Penjual kain tenun songket Sidemen asli dan berkualitas di Bali. Banyak pilihan motif dengan harga
                     yang variatif.</p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Banjar Dinas Klungah, Desa
                     Wisma Kerta,
