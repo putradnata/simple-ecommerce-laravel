@@ -512,6 +512,7 @@
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Banjar Dinas Klungah, Desa
                     Wisma Kerta,
                     Kecamatan Sidemen, Kabupaten Karangasem, Bali 80864</p>
+                <p>Bergabung Sebagai Penjual, Hubungi Kontak Dibawah Ini :</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@tenun-songket.com</p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+62 878 613 938 76</p>
             </div>
