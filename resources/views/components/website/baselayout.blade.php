@@ -188,7 +188,8 @@
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik
                                         Disini
                                     </h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Tenun Songket Sidemen Berkualitas</h3>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Tenun Songket
+                                        Sidemen Berkualitas</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
                             </div>
@@ -201,7 +202,8 @@
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">Dapatkan Kain Menarik
                                         Disini
                                     </h4>
-                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Tenun Songket Asli Sidemen</h3>
+                                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Kain Tenun Songket Asli
+                                        Sidemen</h3>
                                     <a href="" class="btn btn-light py-2 px-3">Belanja Sekarang</a>
                                 </div>
                             </div>
@@ -513,8 +515,16 @@
                     Wisma Kerta,
                     Kecamatan Sidemen, Kabupaten Karangasem, Bali 80864</p>
                 <p>Bergabung Sebagai Penjual, Hubungi Kontak Dibawah Ini :</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@tenun-songket.com</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+62 878 613 938 76</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>
+                    <a href="mailto:info@tenun-songket.com">
+                        info@tenun-songket.com
+                    </a>
+                </p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>
+                    <a href="https://wa.me/+6287861393876">
+                        +62 878 613 938 76
+                    </a>
+                </p>
             </div>
             {{-- <div class="col-lg-8 col-md-12">
                 <div class="row">
@@ -604,8 +614,11 @@
     <!-- Contact Javascript File -->
     {{-- <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
     <!-- Template Javascript -->
     <script src="{{ asset('assets/shop/js/main.js') }}"></script>
+
+    @yield('scriptPlace')
 </body>
 
 </html>

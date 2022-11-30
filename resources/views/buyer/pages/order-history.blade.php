@@ -2,6 +2,21 @@
 
 @section('CSSPlace')
     <style>
+        input#invoice {
+            border: none;
+        }
+
+        input#airwaybill {
+            border: none;
+        }
+
+        button.btn-copy {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 9px;
+        }
+
         .card img {
             height: 20vh !important;
         }
@@ -203,12 +218,16 @@
                     @foreach ($data as $key => $data)
                         <div class="product-card__product--wrapper">
                             <div style="margin-top: 20px;">
-                                <p style="font-weight: 700">Nama Toko: </p>{{ $data['seller_name'] }}
-                                ({{ $data['invoice_code'] }})
+                                <p style="font-weight: 700">Nama Toko: </p>{{ $data['seller_name'] }} <br />
+                                <input id="invoice" type="text" value="{{ $data['invoice_code'] }}" />
+                                <button class="btn-copy" data-clipboard-target="#invoice">Copy</button>
+                                {{-- ({{ $data['invoice_code'] }}) --}}
                             </div>
                             <div style="margin-top: 20px;">
-                                <p style="font-weight: 700">ResI: </p> {{ $data['product'][0]['shipper'] }}
-                                ({{ $data['product'][0]['airwaybill'] }})
+                                <p style="font-weight: 700">Resi: </p> {{ $data['product'][0]['shipper'] }} <br />
+                                <input id="airwaybill" type="text" value="{{ $data['product'][0]['airwaybill'] }}" />
+                                <button class="btn-copy" data-clipboard-target="#airwaybill">Copy</button>
+                                {{-- ({{ $data['product'][0]['airwaybill'] }}) --}}
                             </div>
 
                             @for ($i = 0; $i < count($data['product']); $i++)
@@ -262,4 +281,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scriptPlace')
+    <script type="text/javascript">
+        new ClipboardJS('.btn-copy');
+    </script>
 @endsection
